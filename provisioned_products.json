@@ -1,0 +1,866 @@
+{
+    "ProvisionedProducts": [
+        {
+            "Name": "david-ngugi-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-ngugi-dg-cloud9-ide/pp-ntrtw7xv6iiiq",
+            "Type": "CFN_STACK",
+            "Id": "pp-ntrtw7xv6iiiq",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-11T16:41:26.327000+00:00",
+            "IdempotencyToken": "6d1c3867-467a-433d-8b30-d59f0218328c",
+            "LastRecordId": "rec-qymcvhf44aw6c",
+            "LastProvisioningRecordId": "rec-qymcvhf44aw6c",
+            "LastSuccessfulProvisioningRecordId": "rec-qymcvhf44aw6c",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/davyngugi@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-lv44rpavmf2im"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-ngugi-dg-cloud9-ide/pp-ntrtw7xv6iiiq"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-ntrtw7xv6iiiq/6641dbd0-c8fc-11ee-8bb1-06860d307d0e",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-lv44rpavmf2im",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-lv44rpavmf2im",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/davyngugi@gmail.com"
+        },
+        {
+            "Name": "felix-odida-dg-lamp-server",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/felix-odida-dg-lamp-server/pp-s2x7xyo6bs77c",
+            "Type": "CFN_STACK",
+            "Id": "pp-s2x7xyo6bs77c",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-28T18:17:13.859000+00:00",
+            "IdempotencyToken": "930e7334-98a0-4e25-bd8a-c25ee4029296",
+            "LastRecordId": "rec-tynm4vvhvnbwo",
+            "LastProvisioningRecordId": "rec-tynm4vvhvnbwo",
+            "LastSuccessfulProvisioningRecordId": "rec-tynm4vvhvnbwo",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-nmxjdjqqgd57e"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/felix@deployguru.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-pkvs7fatwh4ss"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/felix-odida-dg-lamp-server/pp-s2x7xyo6bs77c"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-s2x7xyo6bs77c/991909e0-d665-11ee-ae47-069ce21d675c",
+            "ProductId": "prod-nmxjdjqqgd57e",
+            "ProductName": "dg-lamp-server",
+            "ProvisioningArtifactId": "pa-pkvs7fatwh4ss",
+            "ProvisioningArtifactName": "dg-lamp-server_pa-pkvs7fatwh4ss",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/felix@deployguru.com"
+        },
+        {
+            "Name": "felix-odida-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/felix-odida-dg-cloud9-ide/pp-7dblndhbmytlq",
+            "Type": "CFN_STACK",
+            "Id": "pp-7dblndhbmytlq",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-28T18:21:59.582000+00:00",
+            "IdempotencyToken": "d7bf881c-89b6-42b5-9794-c5d96921145d",
+            "LastRecordId": "rec-5stxkbj26gw4e",
+            "LastProvisioningRecordId": "rec-5stxkbj26gw4e",
+            "LastSuccessfulProvisioningRecordId": "rec-5stxkbj26gw4e",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/felix@deployguru.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-mioosyfr24vtw"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/felix-odida-dg-cloud9-ide/pp-7dblndhbmytlq"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-7dblndhbmytlq/436a6b00-d666-11ee-b359-067232fdc6fc",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-mioosyfr24vtw",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-mioosyfr24vtw",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/felix@deployguru.com"
+        },
+        {
+            "Name": "israel-ibrahim-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/israel-ibrahim-dg-cloud9-ide/pp-dycfc7jt57km4",
+            "Type": "CFN_STACK",
+            "Id": "pp-dycfc7jt57km4",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-03-01T20:48:37.158000+00:00",
+            "IdempotencyToken": "c4d6f03b-96b4-4c4f-b135-0023deb4ea64",
+            "LastRecordId": "rec-uoh67l5zbaw5g",
+            "LastProvisioningRecordId": "rec-uoh67l5zbaw5g",
+            "LastSuccessfulProvisioningRecordId": "rec-uoh67l5zbaw5g",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/israel7manuel@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-mioosyfr24vtw"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/israel-ibrahim-dg-cloud9-ide/pp-dycfc7jt57km4"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-dycfc7jt57km4/13f8c8f0-d80d-11ee-b471-02699870dbe5",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-mioosyfr24vtw",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-mioosyfr24vtw",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/israel7manuel@gmail.com"
+        },
+        {
+            "Name": "dg-vpc",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/dg-vpc/pp-popexsahz5j7y",
+            "Type": "CFN_STACK",
+            "Id": "pp-popexsahz5j7y",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2023-12-06T03:55:31.522000+00:00",
+            "IdempotencyToken": "6b6516f4-198e-40d7-9c2a-88bf737c22e2",
+            "LastRecordId": "rec-nn47ua73r56pw",
+            "LastProvisioningRecordId": "rec-nn47ua73r56pw",
+            "LastSuccessfulProvisioningRecordId": "rec-nn47ua73r56pw",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-j7ewjxq7vsxe6"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-superadmins_c426c70b93d1ff2a/eddy@deployguru.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-xvqsjdgz24zcy"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-mmtuwbwto55wu"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/dg-vpc/pp-popexsahz5j7y"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-popexsahz5j7y/4d644a80-93eb-11ee-98db-060d5ecc6f06",
+            "ProductId": "prod-j7ewjxq7vsxe6",
+            "ProductName": "dg-basic-vpc",
+            "ProvisioningArtifactId": "pa-ofxyua4hjedrm",
+            "ProvisioningArtifactName": "dg-basic-vpc_pa-ofxyua4hjedrm",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-superadmins_c426c70b93d1ff2a",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-superadmins_c426c70b93d1ff2a/eddy@deployguru.com"
+        },
+        {
+            "Name": "edna-samuel-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/edna-samuel-dg-cloud9-ide/pp-c5xdhvws6gg3o",
+            "Type": "CFN_STACK",
+            "Id": "pp-c5xdhvws6gg3o",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-11T17:31:07.792000+00:00",
+            "IdempotencyToken": "29750827-ab9d-42ff-8868-586a81af68f8",
+            "LastRecordId": "rec-us5nbldvwqhgg",
+            "LastProvisioningRecordId": "rec-us5nbldvwqhgg",
+            "LastSuccessfulProvisioningRecordId": "rec-us5nbldvwqhgg",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/vedna8221@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-lv44rpavmf2im"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/edna-samuel-dg-cloud9-ide/pp-c5xdhvws6gg3o"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-c5xdhvws6gg3o/576cb150-c903-11ee-b771-02bca21d7329",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-lv44rpavmf2im",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-lv44rpavmf2im",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/vedna8221@gmail.com"
+        },
+        {
+            "Name": "israel-ibrahim-dg-lamp-server",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/israel-ibrahim-dg-lamp-server/pp-uco3gkuuwupv4",
+            "Type": "CFN_STACK",
+            "Id": "pp-uco3gkuuwupv4",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-20T03:56:04.989000+00:00",
+            "IdempotencyToken": "37a44476-6ecb-44f1-9bb3-587915e47f76",
+            "LastRecordId": "rec-y277bixmqv4ao",
+            "LastProvisioningRecordId": "rec-y277bixmqv4ao",
+            "LastSuccessfulProvisioningRecordId": "rec-y277bixmqv4ao",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-nmxjdjqqgd57e"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/israel7manuel@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-xhb2vjjyxm2i6"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/israel-ibrahim-dg-lamp-server/pp-uco3gkuuwupv4"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-uco3gkuuwupv4/f8c39450-cfa3-11ee-b457-06cdaf334cdc",
+            "ProductId": "prod-nmxjdjqqgd57e",
+            "ProductName": "dg-lamp-server",
+            "ProvisioningArtifactId": "pa-xhb2vjjyxm2i6",
+            "ProvisioningArtifactName": "dg-lamp-server_pa-xhb2vjjyxm2i6",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/israel7manuel@gmail.com"
+        },
+        {
+            "Name": "edna-samuel-dg-lamp-server",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/edna-samuel-dg-lamp-server/pp-5omyalfn2stvi",
+            "Type": "CFN_STACK",
+            "Id": "pp-5omyalfn2stvi",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-24T21:05:57.078000+00:00",
+            "IdempotencyToken": "7194534a-f32f-4d55-9ee1-e769eeac1205",
+            "LastRecordId": "rec-nn6h2zh6p4l6c",
+            "LastProvisioningRecordId": "rec-nn6h2zh6p4l6c",
+            "LastSuccessfulProvisioningRecordId": "rec-nn6h2zh6p4l6c",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-nmxjdjqqgd57e"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/vedna8221@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-xhb2vjjyxm2i6"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/edna-samuel-dg-lamp-server/pp-5omyalfn2stvi"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-5omyalfn2stvi/8153f550-d358-11ee-8ace-06f6c0cda6be",
+            "ProductId": "prod-nmxjdjqqgd57e",
+            "ProductName": "dg-lamp-server",
+            "ProvisioningArtifactId": "pa-xhb2vjjyxm2i6",
+            "ProvisioningArtifactName": "dg-lamp-server_pa-xhb2vjjyxm2i6",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/vedna8221@gmail.com"
+        },
+        {
+            "Name": "david-odida-dg-cloud9-ide-02250123",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-odida-dg-cloud9-ide-02250123/pp-rs3oxvyxnmzoa",
+            "Type": "CFN_STACK",
+            "Id": "pp-rs3oxvyxnmzoa",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-25T01:19:51.361000+00:00",
+            "IdempotencyToken": "ff4c6522-cb30-48e4-a8b0-9499fc187398",
+            "LastRecordId": "rec-jx5v2fyfsb3he",
+            "LastProvisioningRecordId": "rec-jx5v2fyfsb3he",
+            "LastSuccessfulProvisioningRecordId": "rec-jx5v2fyfsb3he",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/ododida11@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-lv44rpavmf2im"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-odida-dg-cloud9-ide-02250123/pp-rs3oxvyxnmzoa"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-rs3oxvyxnmzoa/f9b10470-d37b-11ee-81fb-0260ed07d365",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-lv44rpavmf2im",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-lv44rpavmf2im",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/ododida11@gmail.com"
+        },
+        {
+            "Name": "henry-owino-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/henry-owino-dg-cloud9-ide/pp-m7kel3oqvsjhc",
+            "Type": "CFN_STACK",
+            "Id": "pp-m7kel3oqvsjhc",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-12T05:09:28.447000+00:00",
+            "IdempotencyToken": "e9825f8e-1c6e-4e77-afc1-acb6d98c6174",
+            "LastRecordId": "rec-ap6nysejvu3by",
+            "LastProvisioningRecordId": "rec-ap6nysejvu3by",
+            "LastSuccessfulProvisioningRecordId": "rec-ap6nysejvu3by",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/henryowino517@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-lv44rpavmf2im"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/henry-owino-dg-cloud9-ide/pp-m7kel3oqvsjhc"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-m7kel3oqvsjhc/e61d8170-c964-11ee-b998-068452d76d53",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-lv44rpavmf2im",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-lv44rpavmf2im",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/henryowino517@gmail.com"
+        },
+        {
+            "Name": "elie-bamunoba-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/elie-bamunoba-dg-cloud9-ide/pp-7dnqrrb4uony6",
+            "Type": "CFN_STACK",
+            "Id": "pp-7dnqrrb4uony6",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-17T21:31:32.787000+00:00",
+            "IdempotencyToken": "f7a1b42f-5756-433e-97ed-e89c674e19e9",
+            "LastRecordId": "rec-w2thhkhbxv4xm",
+            "LastProvisioningRecordId": "rec-w2thhkhbxv4xm",
+            "LastSuccessfulProvisioningRecordId": "rec-w2thhkhbxv4xm",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/eliebamunoba@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-lv44rpavmf2im"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/elie-bamunoba-dg-cloud9-ide/pp-7dnqrrb4uony6"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-7dnqrrb4uony6/ebd28b80-cddb-11ee-ba80-0635929eabd8",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-lv44rpavmf2im",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-lv44rpavmf2im",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/eliebamunoba@gmail.com"
+        },
+        {
+            "Name": "elie-bamunoba-dg-lamp-server",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/elie-bamunoba-dg-lamp-server/pp-tpccpt2y5ppgi",
+            "Type": "CFN_STACK",
+            "Id": "pp-tpccpt2y5ppgi",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-19T12:59:39.115000+00:00",
+            "IdempotencyToken": "c5418b5f-33c1-41bf-b737-cd8e95b3c79d",
+            "LastRecordId": "rec-nytftge6yr3e4",
+            "LastProvisioningRecordId": "rec-nytftge6yr3e4",
+            "LastSuccessfulProvisioningRecordId": "rec-nytftge6yr3e4",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-nmxjdjqqgd57e"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/eliebamunoba@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-xhb2vjjyxm2i6"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/elie-bamunoba-dg-lamp-server/pp-tpccpt2y5ppgi"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-tpccpt2y5ppgi/bde8edd0-cf26-11ee-8cd9-06851b514006",
+            "ProductId": "prod-nmxjdjqqgd57e",
+            "ProductName": "dg-lamp-server",
+            "ProvisioningArtifactId": "pa-xhb2vjjyxm2i6",
+            "ProvisioningArtifactName": "dg-lamp-server_pa-xhb2vjjyxm2i6",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/eliebamunoba@gmail.com"
+        },
+        {
+            "Name": "earnest-achayo-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/earnest-achayo-dg-cloud9-ide/pp-rj2nkz2t6wqku",
+            "Type": "CFN_STACK",
+            "Id": "pp-rj2nkz2t6wqku",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-19T17:25:01.756000+00:00",
+            "IdempotencyToken": "27e3e960-da00-4a3e-afd0-ae367a658525",
+            "LastRecordId": "rec-isrz5hm6ijjfw",
+            "LastProvisioningRecordId": "rec-isrz5hm6ijjfw",
+            "LastSuccessfulProvisioningRecordId": "rec-isrz5hm6ijjfw",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/earnytechlive@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-lv44rpavmf2im"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/earnest-achayo-dg-cloud9-ide/pp-rj2nkz2t6wqku"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-rj2nkz2t6wqku/d09ab240-cf4b-11ee-9ec6-0a1ae4443d19",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-lv44rpavmf2im",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-lv44rpavmf2im",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/earnytechlive@gmail.com"
+        },
+        {
+            "Name": "george-lyson-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/george-lyson-dg-cloud9-ide/pp-iopzpfha3scuu",
+            "Type": "CFN_STACK",
+            "Id": "pp-iopzpfha3scuu",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-23T09:00:41.818000+00:00",
+            "IdempotencyToken": "bf11f0b1-6076-47b8-823e-2df7ea77ba2a",
+            "LastRecordId": "rec-2mkr7ugtenu6w",
+            "LastProvisioningRecordId": "rec-2mkr7ugtenu6w",
+            "LastSuccessfulProvisioningRecordId": "rec-2mkr7ugtenu6w",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/georgelysonglo@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-lv44rpavmf2im"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/george-lyson-dg-cloud9-ide/pp-iopzpfha3scuu"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-iopzpfha3scuu/05d29410-d22a-11ee-b6ef-0213d24d685d",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-lv44rpavmf2im",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-lv44rpavmf2im",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/georgelysonglo@gmail.com"
+        },
+        {
+            "Name": "harrison-ronoh-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/harrison-ronoh-dg-cloud9-ide/pp-wvpbnzjef5xxm",
+            "Type": "CFN_STACK",
+            "Id": "pp-wvpbnzjef5xxm",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-29T11:47:49.186000+00:00",
+            "IdempotencyToken": "a17c0f6c-1fea-464a-a230-c1cc1b591942",
+            "LastRecordId": "rec-fq4x2cexgdd3i",
+            "LastProvisioningRecordId": "rec-fq4x2cexgdd3i",
+            "LastSuccessfulProvisioningRecordId": "rec-fq4x2cexgdd3i",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/ronohharrison@students.uonbi.ac.ke"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-mioosyfr24vtw"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/harrison-ronoh-dg-cloud9-ide/pp-wvpbnzjef5xxm"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-wvpbnzjef5xxm/5d140290-d6f8-11ee-aca8-022ebda9a987",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-mioosyfr24vtw",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-mioosyfr24vtw",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/ronohharrison@students.uonbi.ac.ke"
+        },
+        {
+            "Name": "arthur-stormer-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/arthur-stormer-dg-cloud9-ide/pp-zfjnb375jl5ie",
+            "Type": "CFN_STACK",
+            "Id": "pp-zfjnb375jl5ie",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-03T13:08:06.259000+00:00",
+            "IdempotencyToken": "549b9009-661a-44c5-ba5c-092ca7afc9b1",
+            "LastRecordId": "rec-ikl2ht447wahg",
+            "LastProvisioningRecordId": "rec-ikl2ht447wahg",
+            "LastSuccessfulProvisioningRecordId": "rec-ikl2ht447wahg",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/stormmerodida2@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-lv44rpavmf2im"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/arthur-stormer-dg-cloud9-ide/pp-zfjnb375jl5ie"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-zfjnb375jl5ie/45814740-c295-11ee-a05b-0a8cc51a47b5",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-lv44rpavmf2im",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-lv44rpavmf2im",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/stormmerodida2@gmail.com"
+        },
+        {
+            "Name": "stormer-odida-dg-app-servers-fleet",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/stormer-odida-dg-app-servers-fleet/pp-cx22ick5buqvk",
+            "Type": "CFN_STACK",
+            "Id": "pp-cx22ick5buqvk",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-04T20:38:11.705000+00:00",
+            "IdempotencyToken": "593741ce-980e-4bcd-bea9-0511ba6838a1",
+            "LastRecordId": "rec-azwrrt6jruvte",
+            "LastProvisioningRecordId": "rec-azwrrt6jruvte",
+            "LastSuccessfulProvisioningRecordId": "rec-azwrrt6jruvte",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-t6vo2ljsqdzc2"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-superadmins_c426c70b93d1ff2a/stormmerodida2@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-2k7oajbv4ehue"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-mmtuwbwto55wu"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/stormer-odida-dg-app-servers-fleet/pp-cx22ick5buqvk"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-cx22ick5buqvk/506bfc00-c39d-11ee-9597-0658857cd5c6",
+            "ProductId": "prod-t6vo2ljsqdzc2",
+            "ProductName": "dg-app-servers-fleet",
+            "ProvisioningArtifactId": "pa-umztomsvmdf5k",
+            "ProvisioningArtifactName": "dg-app-servers-fleet_pa-umztomsvmdf5k",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-superadmins_c426c70b93d1ff2a",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-superadmins_c426c70b93d1ff2a/stormmerodida2@gmail.com"
+        },
+        {
+            "Name": "earnest-achayo-dg-lamp-server",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/earnest-achayo-dg-lamp-server/pp-qo37vf6scjwr4",
+            "Type": "CFN_STACK",
+            "Id": "pp-qo37vf6scjwr4",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-20T19:09:33.355000+00:00",
+            "IdempotencyToken": "c64a9d0c-4199-4b76-9eb0-1050253e4607",
+            "LastRecordId": "rec-ozrezabaecjnq",
+            "LastProvisioningRecordId": "rec-ozrezabaecjnq",
+            "LastSuccessfulProvisioningRecordId": "rec-ozrezabaecjnq",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-nmxjdjqqgd57e"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/earnytechlive@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-xhb2vjjyxm2i6"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/earnest-achayo-dg-lamp-server/pp-qo37vf6scjwr4"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-qo37vf6scjwr4/950e9e20-d023-11ee-b471-02699870dbe5",
+            "ProductId": "prod-nmxjdjqqgd57e",
+            "ProductName": "dg-lamp-server",
+            "ProvisioningArtifactId": "pa-xhb2vjjyxm2i6",
+            "ProvisioningArtifactName": "dg-lamp-server_pa-xhb2vjjyxm2i6",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/earnytechlive@gmail.com"
+        },
+        {
+            "Name": "harrison-ronoh-dg-lamp-server",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/harrison-ronoh-dg-lamp-server/pp-kho4nzocofigq",
+            "Type": "CFN_STACK",
+            "Id": "pp-kho4nzocofigq",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-21T07:25:16.271000+00:00",
+            "IdempotencyToken": "0a2daed6-ebb9-4ad8-a6de-814039b593d8",
+            "LastRecordId": "rec-ebasal656a4du",
+            "LastProvisioningRecordId": "rec-ebasal656a4du",
+            "LastSuccessfulProvisioningRecordId": "rec-ebasal656a4du",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-nmxjdjqqgd57e"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/ronohharrison@students.uonbi.ac.ke"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-xhb2vjjyxm2i6"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/harrison-ronoh-dg-lamp-server/pp-kho4nzocofigq"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-kho4nzocofigq/5c54ce30-d08a-11ee-b457-06cdaf334cdc",
+            "ProductId": "prod-nmxjdjqqgd57e",
+            "ProductName": "dg-lamp-server",
+            "ProvisioningArtifactId": "pa-xhb2vjjyxm2i6",
+            "ProvisioningArtifactName": "dg-lamp-server_pa-xhb2vjjyxm2i6",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/ronohharrison@students.uonbi.ac.ke"
+        },
+        {
+            "Name": "david-odida-dg-lamp-server-02250102",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-odida-dg-lamp-server-02250102/pp-dlsfmdc6to5k4",
+            "Type": "CFN_STACK",
+            "Id": "pp-dlsfmdc6to5k4",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-25T01:05:30.754000+00:00",
+            "IdempotencyToken": "62ae9e4c-cbbd-4082-821b-3ca5f9502f16",
+            "LastRecordId": "rec-nd5mhnc5e2gim",
+            "LastProvisioningRecordId": "rec-nd5mhnc5e2gim",
+            "LastSuccessfulProvisioningRecordId": "rec-nd5mhnc5e2gim",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-nmxjdjqqgd57e"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/ododida11@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-xhb2vjjyxm2i6"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-odida-dg-lamp-server-02250102/pp-dlsfmdc6to5k4"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-dlsfmdc6to5k4/f8b74d10-d379-11ee-8df2-0a8977f5b29b",
+            "ProductId": "prod-nmxjdjqqgd57e",
+            "ProductName": "dg-lamp-server",
+            "ProvisioningArtifactId": "pa-xhb2vjjyxm2i6",
+            "ProvisioningArtifactName": "dg-lamp-server_pa-xhb2vjjyxm2i6",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/ododida11@gmail.com"
+        },
+        {
+            "Name": "david-ngugi-dg-lamp-server",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-ngugi-dg-lamp-server/pp-jmxlhjpg4in4s",
+            "Type": "CFN_STACK",
+            "Id": "pp-jmxlhjpg4in4s",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-26T12:40:15.855000+00:00",
+            "IdempotencyToken": "b090a0af-3c71-4e03-bf3b-1813646bb8d6",
+            "LastRecordId": "rec-zh62tokifyjjs",
+            "LastProvisioningRecordId": "rec-zh62tokifyjjs",
+            "LastSuccessfulProvisioningRecordId": "rec-zh62tokifyjjs",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-nmxjdjqqgd57e"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/davyngugi@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-xhb2vjjyxm2i6"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-ngugi-dg-lamp-server/pp-jmxlhjpg4in4s"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-jmxlhjpg4in4s/317350b0-d4a4-11ee-aca8-022ebda9a987",
+            "ProductId": "prod-nmxjdjqqgd57e",
+            "ProductName": "dg-lamp-server",
+            "ProvisioningArtifactId": "pa-xhb2vjjyxm2i6",
+            "ProvisioningArtifactName": "dg-lamp-server_pa-xhb2vjjyxm2i6",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/davyngugi@gmail.com"
+        }
+    ],
+    "TotalResultsCount": 21
+}
