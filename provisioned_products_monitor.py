@@ -42,7 +42,12 @@ def get_threshold_time(hours=8):
 
 def query_provisioned_products(sc_client):
     """Query provisioned products."""
-    return sc_client.search_provisioned_products()
+    response = sc_client.search_provisioned_products()
+    # Convert datetime objects to string representations
+    for product in response['ProvisionedProducts']:
+        product['CreatedTime'] = product['CreatedTime'].strftime("%Y-%m-%dT%H:%M:%S.%f%z")
+    return response
+
 
 
 def send_slack_notification(webhook_url, message_content):
