@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resource Status Dashboard</title>
+    <style>
+        .table-height {
+            height: 50vh;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 0;
+        }
+
+        .details {
+            display: none;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Tailwind JS file -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+    <div class="container">
+        <h1 class="mb-4 mt-5 text-gray-600 font-bold">Resource Status Dashboard</h1>
+        <div class="table-responsive table-height border-bottom">
+            <table class="table table-bordered">
+                <thead class="thead-dark sticky">
+                    <tr class="text-sm">
+                        <th></th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in provisioned_products %}
+                    <tr class="text-sm">
+                        <td>
+                            <input type="radio" class="radio" name="selectedProduct" id="radio{{ product.index }}"
+                            onchange="showDetailsForRow({{ product.index }})">
+                        </td>
+                        <td>{{ product.Name }}</td>
+                        <td>{{ product.duration }}</td>
+                        <td>{{ product.Status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="selectedItemDetailsRow" style="display: none;" class="">
+            <h6 class="mt-6 font-weight-bold mb-3 text-gray-600">Details</h6>
+            <div id="selectedItemDetails" class="border rounded-sm bg-gray-50 p-3  text-sm"></div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var provisioned_products = {{ provisioned_products | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+
+</html>
