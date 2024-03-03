@@ -6,8 +6,8 @@ function showDetailsForRow(index) {
     console.log(user)
     // Display details in the details section
     let detailsDiv = document.getElementById('selectedItemDetails');
-    detailsDiv.innerHTML = `<p><strong class="text-gray-600">Product Name:</strong> ${user.email}</p>
-                             <p><strong class="text-gray-600">Duration:</strong> ${user.product_count}</p>`;
+    detailsDiv.innerHTML = `<p><strong class="text-gray-600">User email:</strong> ${user.email}</p>
+                             <p><strong class="text-gray-600">Number of provisioned products:</strong> ${user.product_count}</p>`;
     selectedItemDetailsRow.style.display = 'block';
 }
 
