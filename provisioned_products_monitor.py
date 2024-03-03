@@ -30,6 +30,10 @@ def get_users(response, threshold = 1):
             index += 1 
 
     return users
+    
+def initialize_service_catalog_client():
+    """Initialize AWS ServiceCatalog client."""
+    return boto3.client('servicecatalog')
 
 def get_threshold_time(hours=8):
     """Return the time threshold."""
@@ -43,14 +47,12 @@ def query_provisioned_products(sc_client):
 
 def send_slack_notification(webhook_url, message_content):
     """Send a notification via Slack."""
-    message_payload = {"text": f"```\n{
-        json.dumps(message_content, indent=4)}\n```"}
+    message_payload = {"text": f"```\n{json.dumps(message_content, indent=4)}\n```"}
     response = requests.post(webhook_url, json=message_payload)
     if response.status_code == 200:
         logging.info('Slack message sent successfully')
     else:
-        logging.error(f'Failed to send Slack message, status code: {
-                      response.status_code}')
+        logging.error(f'Failed to send Slack message, status code: {response.status_code}')
 
 
 def get_duration_in_days(duration_hours):

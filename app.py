@@ -10,8 +10,12 @@ app = Flask(__name__)
 @app.route('/')
 def stale_provisioned_products():
 
-    with open(os.path.join(get_base_dir(), 'provisioned_products.json'), 'r') as file:
-        response = json.load(file)
+    # with open(os.path.join(get_base_dir(), 'provisioned_products.json'), 'r') as file:
+        # response = json.load(file)
+        
+    sc_client = initialize_service_catalog_client()
+    
+    response = query_provisioned_products(sc_client)
 
     threshold_time = get_threshold_time()
 
@@ -22,16 +26,14 @@ def stale_provisioned_products():
 
     return render_template('dashboard.html', provisioned_products=provisioned_products)
 
-
-def initialize_service_catalog_client():
-    """Initialize AWS ServiceCatalog client."""
-    return boto3.client('servicecatalog')
-
 @app.route('/users')
 def users():
-    with open(os.path.join(get_base_dir(), 'provisioned_products.json'), 'r') as file:
-        response = json.load(file)
-
+    # with open(os.path.join(get_base_dir(), 'provisioned_products.json'), 'r') as file:
+        # response = json.load(file)
+    sc_client = initialize_service_catalog_client()
+    
+    response = query_provisioned_products(sc_client)
+    
     users = get_users(response['ProvisionedProducts'])
 
     return render_template('users.html', users = users)
