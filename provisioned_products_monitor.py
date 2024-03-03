@@ -33,7 +33,7 @@ def get_users(response, threshold = 1):
     
 def initialize_service_catalog_client():
     """Initialize AWS ServiceCatalog client."""
-    return boto3.client('servicecatalog')
+    return boto3.client('servicecatalog', region_name='ap-south-1')
 
 def get_threshold_time(hours=8):
     """Return the time threshold."""
