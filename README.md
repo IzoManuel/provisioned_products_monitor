@@ -21,7 +21,7 @@
 2. Set up AWS credentials with appropriate permissions.
 3. Install the required Python packages using `pip install -r requirements.txt`.
 4. Run the Flask application by executing `python app.py`.
-5. Access the application in your web browser at `http://localhost:5000`.
+5. Access the application in your web browser at `<your-domain>:5000`.
 
 ## Notes
 - Ensure that the `provisioned_products.json` file is present in the root directory of the application. This file contains the response data from the AWS Service Catalog API, Currently used for testing purposes. It shall be dropped later
