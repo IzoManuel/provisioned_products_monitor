@@ -27,14 +27,14 @@ def stale_provisioned_products():
     return render_template('dashboard.html', provisioned_products=provisioned_products)
 
 @app.route('/users')
-def users():
+def user_launches():
     # with open(os.path.join(get_base_dir(), 'provisioned_products.json'), 'r') as file:
         # response = json.load(file)
     sc_client = initialize_service_catalog_client()
     
     response = query_provisioned_products(sc_client)
     
-    users = get_users(response['ProvisionedProducts'])
+    users = track_user_launches(response['ProvisionedProducts'])
 
     return render_template('users.html', users = users)
 

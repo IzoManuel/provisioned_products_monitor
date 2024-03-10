@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/ubuntu/environment/dg-capstone-1-team-israel/venv/bin/python
 import os
 import boto3
 import requests
@@ -6,7 +6,9 @@ import logging
 from datetime import datetime, timedelta, timezone
 import json
 
-def get_users(response, threshold = 1):
+logging.basicConfig(level=logging.INFO)
+
+def track_user_launches(response, threshold = 1):
     """Count the number of provisioned products for each user."""
     users = []
 
@@ -54,6 +56,9 @@ def send_slack_notification(webhook_url, message_content):
     """Send a notification via Slack."""
     message_payload = {"text": f"```\n{json.dumps(message_content, indent=4)}\n```"}
     response = requests.post(webhook_url, json=message_payload)
+    
+    # logging.info(f"Slack API request: {message_payload}")
+    
     if response.status_code == 200:
         logging.info('Slack message sent successfully')
     else:
@@ -85,3 +90,31 @@ def get_stale_provisioned_products(response, threshold_time):
             stale_provisioned_products.append(product_view_detail)
 
     return stale_provisioned_products
+    
+def extract_user_info(response):
+    """Extract first name, last name, and email from the response."""
+    user_info = []
+    for product_view_detail in response['ProvisionedProducts']:
+        user_arn_session = product_view_detail['UserArnSession']
+        email = user_arn_session.split('/')[-1]  # Extract email from the ARN session
+        parts = product_view_detail['Name'].split('-')  # Split name to extract first name and last name
+        if len(parts) >= 3:
+            first_name = parts[0]
+            last_name = parts[1]
+            user_info.append({'first_name': first_name, 'last_name': last_name, 'email': email})
+    return user_info
+    
+def write_info_to_json(info, filename):
+    """Write user information extracted from the response to a JSON file."""
+    with open(filename, 'w') as json_file:
+        json.dump(info, json_file, indent=4)
+
+
+
+sc_client = initialize_service_catalog_client()
+
+provisioned_products = query_provisioned_products(sc_client)
+
+user_info = extract_user_info(provisioned_products)
+
+write_info_to_json(user_info, "user_info.json")
