@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+#!/home/ubuntu/environment/dg-capstone-1-team-israel/venv/bin/python
+
 import logging
 from flask import Flask, render_template
 from jinja2 import Environment, FileSystemLoader
@@ -32,7 +33,7 @@ def stale_provisioned_products():
         users = track_user_launches(response)
         
         # Check naming convention
-        non_conforming_products = check_naming_convention(users, provisioned_products)
+        non_conforming_products = check_naming_convention(users, response)
         
         # Get unauthorized users
         unauthorized_users = get_unauthorized_users(users, stale_products)
