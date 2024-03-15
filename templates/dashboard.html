@@ -24,44 +24,85 @@
 
     <!-- Tailwind JS file -->
     <script src="https://cdn.tailwindcss.com"></script>
-
 </head>
 
 <body>
-
     {% include 'navbar.html' %}
     <div class="container">
-        <h1 class="mb-4 mt-5 text-gray-600 font-bold">Resource Status Dashboard</h1>
-        <div class="table-responsive table-height border-bottom">
-            <table class="table table-bordered">
-                <thead class="thead-dark sticky">
-                    <tr class="text-sm">
-                        <th></th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Duration</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for product in provisioned_products %}
-                    <tr class="text-sm">
-                        <td>
-                            <input type="radio" class="radio" name="selectedProduct" id="radio{{ product.index }}"
-                            onchange="showDetailsForRow({{ product.index }})">
-                        </td>
-                        <td>{{ product.Name }}</td>
-                        <td>{{ product.duration }}</td>
-                        <td>{{ product.Status }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div>
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-toggle="pill" data-target="#pills-home"
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                        Stale products (8hrs)
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile"
+                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                        User's Launched products
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-toggle="pill" data-target="#pills-contact"
+                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+                        Naming Descrepancies
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-toggle="pill" data-target="#pills-contact"
+                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+                        Unauthorised product launches
+                    </button>
+                </li>
+            </ul>
         </div>
 
-        <div id="selectedItemDetailsRow" style="display: none;" class="">
-            <h6 class="mt-6 font-weight-bold mb-3 text-gray-600">Details</h6>
-            <div id="selectedItemDetails" class="border rounded-sm bg-gray-50 p-3  text-sm"></div>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="table-responsive table-height border-bottom">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark sticky">
+                            <tr class="text-sm">
+                                <th></th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in stale_products %}
+                            <tr class="text-sm">
+                                <td>
+                                    <input type="radio" class="radio" name="selectedProduct"
+                                        id="radio{{ product.index }}"
+                                        onchange="showDetailsForRow({{ product.index }})" />
+                                </td>
+                                <td>{{ product.Name }}</td>
+                                <td>{{ product.duration }}</td>
+                                <td>{{ product.Status }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="selectedItemDetailsRow" style="display: none" class="">
+                    <h6 class="mt-6 font-weight-bold mb-3 text-gray-600">Details</h6>
+                    <div id="selectedItemDetails" class="border rounded-sm bg-gray-50 p-3 text-sm"></div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                ...
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                ...
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                ...
+            </div>
         </div>
+
 
     </div>
 
@@ -70,7 +111,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        var provisioned_products = {{ provisioned_products | tojson }};
+        var stale_products = {{ stale_products | tojson }};
     </script>
     <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>

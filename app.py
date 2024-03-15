@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/ubuntu/environment/dg-capstone-1-team-israel/venv/bin/python
 import logging
 from flask import Flask, render_template
 from jinja2 import Environment, FileSystemLoader
@@ -38,7 +38,7 @@ def stale_provisioned_products():
         unauthorized_users = get_unauthorized_users(users, stale_products)
 
         # Render template with data
-        return render_template('dashboard.html', provisioned_products=provisioned_products, users=users, non_conforming_products=non_conforming_products, unauthorized_users=unauthorized_users)
+        return render_template('dashboard.html', stale_products=stale_products, users=users, non_conforming_products=non_conforming_products, unauthorized_users=unauthorized_users)
     
     except Exception as e:
         logging.error(f"An error occurred: {str(e)}")
