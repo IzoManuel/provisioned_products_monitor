@@ -1,4 +1,4 @@
-#!/home/ubuntu/environment/dg-capstone-1-team-israel/venv/bin/python
+#!/usr/bin/env python
 import os
 import boto3
 import requests
