@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 import logging
 from flask import Flask, render_template
 from jinja2 import Environment, FileSystemLoader
