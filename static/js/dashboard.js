@@ -11,11 +11,11 @@ function showProductDetailsForRow(index) {
                              <p><strong class="text-gray-600 text-red-500">Duration:</strong> ${selectedProduct.duration}</p>
                              <p><strong class="text-gray-600">Status:</strong> ${selectedProduct.Status}</p>`;
     // Define selectedItemDetailsRow
-    let selectedItemDetailsRow = document.getElementById('selectedItemDetailsRow');
+    let selectedProductItemDetailsRow = document.getElementById('selectedItemDetailsRow');
 
     // Check if selectedItemDetailsRow is defined before setting its display property
-    if (selectedItemDetailsRow) {
-        selectedItemDetailsRow.style.display = 'block';
+    if (selectedProductItemDetailsRow) {
+        selectedProductItemDetailsRow.style.display = 'block';
     } else {
         console.error('selectedItemDetailsRow is undefined');
     }
@@ -33,11 +33,11 @@ function showUserDetailsForRow(index) {
     detailsDiv.innerHTML = `<p><strong class="text-gray-600">User email:</strong> ${user.email}</p>
                              <p><strong class="text-gray-600">Number of provisioned products:</strong> ${user.product_count}</p>`;
     // Define selectedItemDetailsRow
-    let selectedItemDetailsRow = document.getElementById('selectedItemDetailsRow');
+    let selectedUserItemDetailsRow = document.getElementById('selectedItemDetailsRow');
 
     // Check if selectedItemDetailsRow is defined before setting its display property
-    if (selectedItemDetailsRow) {
-        selectedItemDetailsRow.style.display = 'block';
+    if (selectedUserItemDetailsRow) {
+        selectedUserItemDetailsRow.style.display = 'block';
     } else {
         console.error('selectedItemDetailsRow is undefined');
     }
