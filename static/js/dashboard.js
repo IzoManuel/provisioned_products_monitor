@@ -17,7 +17,7 @@ function showProductDetailsForRow(index) {
 document.querySelectorAll('.radio').forEach(radio => {
     radio.addEventListener('change', function() {
         let selectedIndex = parseInt(this.id.replace('radio', ''));
-        showDetailsForRow(selectedIndex);
+        showProductDetailsForRow(selectedIndex);
     });
 });
 
@@ -38,6 +38,6 @@ function showUserDetailsForRow(index) {
 document.querySelectorAll('.radio').forEach(radio => {
     radio.addEventListener('change', function() {
         let selectedIndex = parseInt(this.id.replace('radio', ''));
-        showDetailsForRow(selectedIndex);
+        showUserDetailsForRow(selectedIndex);
     });
 });
