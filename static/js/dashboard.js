@@ -10,7 +10,16 @@ function showProductDetailsForRow(index) {
     detailsDiv.innerHTML = `<p><strong class="text-gray-600">Product Name:</strong> ${selectedProduct.Name}</p>
                              <p><strong class="text-gray-600 text-red-500">Duration:</strong> ${selectedProduct.duration}</p>
                              <p><strong class="text-gray-600">Status:</strong> ${selectedProduct.Status}</p>`;
-    selectedItemDetailsRow.style.display = 'block';
+    // Define selectedItemDetailsRow
+    let selectedItemDetailsRow = document.getElementById('selectedItemDetailsRow');
+
+    // Check if selectedItemDetailsRow is defined before setting its display property
+    if (selectedItemDetailsRow) {
+        selectedItemDetailsRow.style.display = 'block';
+    } else {
+        console.error('selectedItemDetailsRow is undefined');
+    }
+    
 }
 
 // Listen for radio button changes
@@ -31,7 +40,15 @@ function showUserDetailsForRow(index) {
     let detailsDiv = document.getElementById('selectedItemDetails');
     detailsDiv.innerHTML = `<p><strong class="text-gray-600">User email:</strong> ${user.email}</p>
                              <p><strong class="text-gray-600">Number of provisioned products:</strong> ${user.product_count}</p>`;
-    selectedItemDetailsRow.style.display = 'block';
+    // Define selectedItemDetailsRow
+    let selectedItemDetailsRow = document.getElementById('selectedItemDetailsRow');
+
+    // Check if selectedItemDetailsRow is defined before setting its display property
+    if (selectedItemDetailsRow) {
+        selectedItemDetailsRow.style.display = 'block';
+    } else {
+        console.error('selectedItemDetailsRow is undefined');
+    }
 }
 
 // Listen for radio button changes
