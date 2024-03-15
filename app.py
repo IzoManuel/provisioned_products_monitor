@@ -1,4 +1,3 @@
-#!/home/ubuntu/environment/dg-capstone-1-team-israel/venv/bin/python
 import logging
 from flask import Flask, render_template
 from jinja2 import Environment, FileSystemLoader
