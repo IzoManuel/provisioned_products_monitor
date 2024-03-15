@@ -22,14 +22,6 @@ function showProductDetailsForRow(index) {
     
 }
 
-// Listen for radio button changes
-document.querySelectorAll('.radio').forEach(radio => {
-    radio.addEventListener('change', function() {
-        let selectedIndex = parseInt(this.id.replace('radio', ''));
-        showProductDetailsForRow(selectedIndex);
-    });
-});
-
 // Function to show details for selected row
 function showUserDetailsForRow(index) {
     // Get the selected product using its index
@@ -55,6 +47,13 @@ function showUserDetailsForRow(index) {
 document.querySelectorAll('.radio').forEach(radio => {
     radio.addEventListener('change', function() {
         let selectedIndex = parseInt(this.id.replace('radio', ''));
-        showUserDetailsForRow(selectedIndex);
+        let type = this.getAttribute('data-type');
+        if (type === 'stale-product') {
+            showProductDetailsForRow(selectedIndex);
+        } else if (type === 'user-launch-count') {
+            showUserDetailsForRow(selectedIndex);
+        } else {
+            console.error('Invalid data-type attribute');
+        }
     });
 });

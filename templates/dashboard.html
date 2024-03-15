@@ -80,7 +80,7 @@
                                 <td>
                                     <input type="radio" class="radio" name="selectedProduct"
                                         id="radio{{ product.index }}"
-                                        onchange="showProductDetailsForRow({{ product.index }})" />
+                                        onchange="showProductDetailsForRow({{ product.index }})" data-type="stale-product"/>
                                 </td>
                                 <td>{{ product.Name }}</td>
                                 <td>{{ product.duration }}</td>
@@ -111,7 +111,7 @@
                             <tr class="text-sm">
                                 <td>
                                     <input type="radio" class="radio" name="selectedUser" id="radio{{ user.index }}"
-                                        onchange="showUserDetailsForRow({{ user.index }})" />
+                                        onchange="showUserDetailsForRow({{ user.index }})" data-type="user-launch-count"/>
                                 </td>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.product_count }}</td>
