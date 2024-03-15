@@ -5,17 +5,11 @@ import logging
 def send_stale_provisioned_products_notification(webhook_url, response, threshold_time):
     """Send a notification to Slack with stale provisioned products appended."""
     stale_provisioned_products = get_stale_provisioned_products(response, threshold_time)
-    user_info = extract_user_info(response)
-    
-    
-    # logging.info(user_info)
  
     if stale_provisioned_products:
         message_content = ""
         for product in stale_provisioned_products:
             message_content += f"Product Name: {product['Name']}\n"
-            # message_content += f"User email: {user_info['email']}\n"
-            # message_content += f"User name: {user_info['first_name']} {user_info['last_name']}\n"
             message_content += f"Duration: {product['duration']}\n"
             message_content += f"Status: {product['Status']}\n\n"
 
