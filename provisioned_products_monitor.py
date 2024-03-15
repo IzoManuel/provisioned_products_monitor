@@ -201,4 +201,3 @@ def get_unauthorized_users(users, provisioned_products):
     except Exception as e:
         logging.error(f"Error checking unauthorized users: {e}")
         return None
-
