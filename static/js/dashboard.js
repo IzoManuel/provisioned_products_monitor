@@ -2,7 +2,7 @@
 function showDetailsForRow(index) {
     // Get the selected product using its index
     console.log('Openning')
-    let selectedProduct = provisioned_products[index];
+    let selectedProduct = stale_products[index];
     console.log(selectedProduct)
     // Display details in the details section
     let detailsDiv = document.getElementById('selectedItemDetails');
