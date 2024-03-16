@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+
 import logging
 from flask import Flask, render_template
 from jinja2 import Environment, FileSystemLoader
@@ -23,7 +24,7 @@ def stale_provisioned_products():
         threshold_time = get_threshold_time()
         
         # Fetch user info from S3
-        users = fetch_user_info_from_s3()
+        users_from_s3 = fetch_user_info_from_s3()
 
         # Get stale provisioned products
         stale_products = get_stale_provisioned_products(response, threshold_time)
@@ -32,16 +33,16 @@ def stale_provisioned_products():
         users = track_user_launches(response)
         
         # Check naming convention
-        non_conforming_products = check_naming_convention(users, response)
+        name_disc_products = check_naming_convention(users_from_s3, response)
         
         # Get unauthorized users
-        unauthorized_users = get_unauthorized_users(users, stale_products)
+        unauthorized_users = get_unauthorized_users(users_from_s3, response)
 
         # Render template with data
-        return render_template('dashboard.html', stale_products=stale_products, users=users, non_conforming_products=non_conforming_products, unauthorized_users=unauthorized_users)
+        return render_template('dashboard.html', stale_products=stale_products, users=users, name_disc_products=name_disc_products, unauthorized_users=unauthorized_users)
     
     except Exception as e:
         logging.error(f"An error occurred: {str(e)}")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)

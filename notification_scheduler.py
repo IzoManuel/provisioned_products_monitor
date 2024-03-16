@@ -1,4 +1,5 @@
-#!/home/ubuntu/environment/dg-capstone-1-team-israel/venv/bin/python
+#!/usr/bin/env python3
+
 from provisioned_products_monitor import *
 import logging
 

@@ -1,0 +1,33 @@
+<div class="table-responsive table-height border-bottom">
+    <table class="table table-bordered">
+        <thead class="thead-dark sticky">
+            <tr class="text-sm">
+                <th></th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in stale_products %}
+            <tr class="text-sm">
+                <td>
+                    <input type="radio" class="radio" name="selectedProduct"
+                        id="radio{{ product.index }}"
+                        onchange="showProductDetailsForRow({{ product.index }})" data-type="stale-product"/>
+                </td>
+                <td>{{ product.Name }}</td>
+                <td>{{ product.duration }}</td>
+                <td>{{ product.Status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="selectedProductItemDetailsRow" style="display: none" class="">
+    <h6 class="mt-6 font-weight-bold mb-3 text-gray-600">Details</h6>
+    <div id="selectedProductItemDetails" class="border rounded-sm bg-gray-50 p-3 text-sm"></div>
+    <h6 class="mt-4 font-weight-bold mb-3 text-gray-600">Full response</h6>
+    <pre class="formatted-json border rounded-sm bg-gray-50 p-3 text-sm" id="selectedStaleProdItemFormattedJSON"></pre>
+</div>

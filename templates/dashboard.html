@@ -18,6 +18,15 @@
         .details {
             display: none;
         }
+
+        .formatted-json {
+            font-family: Arial, sans-serif;
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
     </style>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -33,28 +42,28 @@
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-secondary active text-gray-500" id="pills-home-tab" data-toggle="pill"
-                        data-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                        data-target="#pills-stale" type="button" role="tab" aria-controls="pills-stale"
                         aria-selected="true">
                         Stale products (8hrs)
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-secondary text-gray-500" id="pills-profile-tab" data-toggle="pill"
-                        data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                        data-target="#pills-launches" type="button" role="tab" aria-controls="pills-launches"
                         aria-selected="false">
                         User's Launched products
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-secondary text-gray-500" id="pills-contact-tab" data-toggle="pill"
-                        data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                        data-target="#pills-discrepancy" type="button" role="tab" aria-controls="pills-discrepancy"
                         aria-selected="false">
-                        Naming Descrepancies
+                        Naming Discrepancies
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-secondary text-gray-500" id="pills-contact-tab" data-toggle="pill"
-                        data-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                        data-target="#pills-unauthorized" type="button" role="tab" aria-controls="pills-unauthorized"
                         aria-selected="false">
                         Unauthorised product launches
                     </button>
@@ -63,74 +72,17 @@
         </div>
 
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="table-responsive table-height border-bottom">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark sticky">
-                            <tr class="text-sm">
-                                <th></th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Duration</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for product in stale_products %}
-                            <tr class="text-sm">
-                                <td>
-                                    <input type="radio" class="radio" name="selectedProduct"
-                                        id="radio{{ product.index }}"
-                                        onchange="showProductDetailsForRow({{ product.index }})" data-type="stale-product"/>
-                                </td>
-                                <td>{{ product.Name }}</td>
-                                <td>{{ product.duration }}</td>
-                                <td>{{ product.Status }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-
-                <div id="selectedProductItemDetailsRow" style="display: none" class="">
-                    <h6 class="mt-6 font-weight-bold mb-3 text-gray-600">Details</h6>
-                    <div id="selectedItemDetails" class="border rounded-sm bg-gray-50 p-3 text-sm"></div>
-                </div>
+            <div class="tab-pane fade show active" id="pills-stale" role="tabpanel" aria-labelledby="pills-home-tab">
+                {% include 'stale-products-table.html' %}
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="table-responsive table-height border-bottom">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark sticky">
-                            <tr class="text-sm">
-                                <th></th>
-                                <th scope="col">User email</th>
-                                <th scope="col">Products count</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for user in users %}
-                            <tr class="text-sm">
-                                <td>
-                                    <input type="radio" class="radio" name="selectedUser" id="radio{{ user.index }}"
-                                        onchange="showUserDetailsForRow({{ user.index }})" data-type="user-launch-count"/>
-                                </td>
-                                <td>{{ user.email }}</td>
-                                <td>{{ user.product_count }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-
-                <div id="selectedUserItemDetailsRow" style="display: none" class="">
-                    <h6 class="mt-6 font-weight-bold mb-3 text-gray-600">Details</h6>
-                    <div id="selectedItemDetails" class="border rounded-sm bg-gray-50 p-3 text-sm"></div>
-                </div>
+            <div class="tab-pane fade" id="pills-launches" role="tabpanel" aria-labelledby="pills-profile-tab">
+                {% include 'user-launches-table.html' %}
             </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                ...
+            <div class="tab-pane fade" id="pills-discrepancy" role="tabpanel" aria-labelledby="pills-contact-tab">
+                {% include 'naming-discrepancy-table.html' %}
             </div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                ...
+            <div class="tab-pane fade" id="pills-unauthorized" role="tabpanel" aria-labelledby="pills-contact-tab">
+                {% include 'unauthorized-users-table.html' %}
             </div>
         </div>
 
@@ -144,6 +96,8 @@
     <script>
         var stale_products = {{ stale_products | tojson }};
         var users = {{ users | tojson }};
+        var name_disc_products = {{ name_disc_products | tojson }}
+        var unauthorized_users = {{ unauthorized_users | tojson }}
     </script>
     <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>

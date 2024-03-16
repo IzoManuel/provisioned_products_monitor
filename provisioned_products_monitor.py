@@ -1,10 +1,12 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+
 import os
 import boto3
 import requests
 import logging
 from datetime import datetime, timedelta, timezone
 import json
+from dotenv import load_dotenv
 
 logging.basicConfig(level=logging.INFO)
 
@@ -17,34 +19,60 @@ def get_threshold_time(hours=8):
     """Return the time threshold."""
     return datetime.now(timezone.utc) - timedelta(hours=hours)
 
+from datetime import datetime
 
 def query_provisioned_products(sc_client):
     """Query provisioned products."""
     try:
-        response = sc_client.search_provisioned_products()
-        # Convert datetime objects to string representations
+        load_dotenv()  # Load environment variables from .env file
+        environment = os.getenv('ENV')
+
+        if environment == 'local':
+            # Load provisioned products from JSON file
+            with open('provisioned_products.json', 'r') as file:
+                response = json.load(file)
+        else:
+            # Query provisioned products from AWS Service Catalog API
+            response = sc_client.search_provisioned_products()
+        
+        # Convert datetime strings to datetime objects
         for product in response['ProvisionedProducts']:
-            product['CreatedTime'] = product['CreatedTime'].strftime("%Y-%m-%dT%H:%M:%S.%f%z")
+            created_time = product['CreatedTime']
+            # logging.info(f"#######CREATED TIME TYPE: {type(created_time)}########")
+            if isinstance(created_time, str):
+                product['CreatedTime'] = datetime.strptime(created_time, "%Y-%m-%dT%H:%M:%S.%f%z")
+        
         return response
     except Exception as e:
         logging.error(f"Error querying provisioned products: {e}")
         return None
 
-def fetch_user_info_from_s3():
-    """Fetch user information JSON file from S3."""
-    try:
-        # S3 bucket and file information
-        s3_client = boto3.client('s3')
-        bucket_name = 'dg-cohort-01'
-        file_key = 'team_israel_users_info2.json'
-        response = s3_client.get_object(Bucket=bucket_name, Key=file_key)
-        user_info_json = json.loads(response['Body'].read().decode('utf-8'))
-        return user_info_json
-    except Exception as e:
-        logging.error(f"Error fetching user info from S3: {e}")
-        return None
-    
 
+def fetch_user_info_from_s3():
+    """Fetch user information from either S3 or a local JSON file."""
+    try:
+        # Load environment variables
+        load_dotenv()
+
+        # Check if running locally or in production
+        environment = os.getenv('ENV')
+
+        if environment == 'local':
+            # Load user information from a local JSON file
+            with open('user_info.json', 'r') as file:
+                user_info = json.load(file)
+        else:
+            # Fetch user information from S3
+            s3_client = boto3.client('s3')
+            bucket_name = 'dg-cohort-01'
+            file_key = 'team_israel_users_info.json'
+            response = s3_client.get_object(Bucket=bucket_name, Key=file_key)
+            user_info = json.loads(response['Body'].read().decode('utf-8'))
+        
+        return user_info
+    except Exception as e:
+        logging.error(f"Error fetching user info: {e}")
+        return None
 
 def send_slack_notification(webhook_url, message_content):
     """Send a notification via Slack."""
@@ -93,14 +121,18 @@ def track_user_launches(response, threshold=1):
 
     return users
 
-
 def get_stale_provisioned_products(response, threshold_time):
     """Return provisioned products older than 8 hours."""
     stale_provisioned_products = []
     try:
         for index, product_view_detail in enumerate(response['ProvisionedProducts']):
-            provisioned_time = datetime.strptime(
-                product_view_detail['CreatedTime'], "%Y-%m-%dT%H:%M:%S.%f%z")
+            provisioned_time_str = product_view_detail['CreatedTime']
+            if isinstance(provisioned_time_str, str):  # Check if provisioned_time_str is a string
+                provisioned_time = datetime.strptime(
+                    provisioned_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+            else:
+                provisioned_time = provisioned_time_str  # If it's already a datetime object, use it directly
+            
             duration = datetime.now(timezone.utc) - provisioned_time
             duration_hours = duration.total_seconds() / 3600
             if provisioned_time < threshold_time:
@@ -113,6 +145,7 @@ def get_stale_provisioned_products(response, threshold_time):
     except Exception as e:
         logging.error(f"Error getting stale provisioned products: {e}")
         return None
+
     
     
 def extract_users_infos(response):
@@ -161,6 +194,7 @@ def write_info_to_json(info, filename):
 def check_naming_convention(users, provisioned_products):
     """Check naming convention and user existence."""
     non_conforming_products = []
+    counter = 0
     try:
         for index, product in enumerate(provisioned_products['ProvisionedProducts']):
             # Extract user email from ARN session
@@ -169,7 +203,6 @@ def check_naming_convention(users, provisioned_products):
             
             # Check if the email exists in the list of users
             user_exists = next((user for user in users if user['email'] == email), None)
-
             # Check naming convention
             product_name = product.get('ProductName', '')
 
@@ -177,7 +210,8 @@ def check_naming_convention(users, provisioned_products):
                 expected_name = f"{user_exists['first_name']}-{user_exists['last_name']}-{product_name}"
                 provided_name = product.get('Name', '')
                 if provided_name !=  expected_name:
-                    non_conforming_products.append({'index': index, 'provided_name': provided_name, 'expected_name': expected_name, 'email': user_exists['email'], 'reason': 'Naming convention not followed', 'product_info': product})
+                    non_conforming_products.append({'index': counter, 'provided_name': provided_name, 'expected_name': expected_name, 'email': user_exists['email'], 'reason': 'Naming convention not followed', 'product_info': product})
+                    counter += 1
         return non_conforming_products
     except Exception as e:
         logging.error(f"Error checking naming convention: {e}")
@@ -186,6 +220,7 @@ def check_naming_convention(users, provisioned_products):
 def get_unauthorized_users(users, provisioned_products):
     """Check for unauthorized users."""
     non_conforming_products = []
+    counter = 0
     try:
         for index, product in enumerate(provisioned_products['ProvisionedProducts']):
             # Extract user email from ARN session
@@ -196,7 +231,8 @@ def get_unauthorized_users(users, provisioned_products):
             user_exists = next((user for user in users if user['email'] == email), None)
             
             if not user_exists:
-                non_conforming_products.append({'index': index, 'email': email, 'reason': 'User does not exist in the list of users', 'product_info': product})
+                non_conforming_products.append({'index': counter, 'email': email, 'reason': 'User does not exist in the list of users', 'product_info': product})
+                counter += 1
         return non_conforming_products
     except Exception as e:
         logging.error(f"Error checking unauthorized users: {e}")
