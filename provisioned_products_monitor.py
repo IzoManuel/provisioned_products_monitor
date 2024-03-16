@@ -43,8 +43,7 @@ def query_provisioned_products(sc_client):
 
 def send_slack_notification(webhook_url, message_content):
     """Send a notification via Slack."""
-    message_payload = {"text": f"```\n{
-        json.dumps(message_content, indent=4)}\n```"}
+    message_payload = {"text": f"```\n{json.dumps(message_content, indent=4)}\n```"}
     response = requests.post(webhook_url, json=message_payload)
     if response.status_code == 200:
         logging.info('Slack message sent successfully')

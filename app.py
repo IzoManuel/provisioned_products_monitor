@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+
 from flask import Flask, render_template
 from jinja2 import Environment, FileSystemLoader
 from config import *
