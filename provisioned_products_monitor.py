@@ -19,8 +19,6 @@ def get_threshold_time(hours=8):
     """Return the time threshold."""
     return datetime.now(timezone.utc) - timedelta(hours=hours)
 
-from datetime import datetime
-
 def query_provisioned_products(sc_client):
     """Query provisioned products."""
     try:
@@ -38,7 +36,6 @@ def query_provisioned_products(sc_client):
         # Convert datetime strings to datetime objects
         for product in response['ProvisionedProducts']:
             created_time = product['CreatedTime']
-            # logging.info(f"#######CREATED TIME TYPE: {type(created_time)}########")
             if isinstance(created_time, str):
                 product['CreatedTime'] = datetime.strptime(created_time, "%Y-%m-%dT%H:%M:%S.%f%z")
         
@@ -106,6 +103,7 @@ def track_user_launches(response, threshold=1):
     # Loop through the provisioned products and count the number for each user
     for product_view_detail in response['ProvisionedProducts']:
         user_arn_session = product_view_detail['UserArnSession']
+        user_info = extract_user_info(product_view_detail)
         email = user_arn_session.split('/')[-1]  # Extract email from the ARN
         if email in user_products:
             user_products[email] += 1
@@ -116,7 +114,7 @@ def track_user_launches(response, threshold=1):
     index = 0
     for email, count in user_products.items():
         if count >= threshold:
-            users.append({'index': index, 'email': email, 'product_count': count, 'product_info': product_view_detail})
+            users.append({'message': 'number of products launched', 'index': index, 'email': email, 'product_count': count, 'product_info': product_view_detail, 'user_info': user_info})
             index += 1 
 
     return users
@@ -210,7 +208,7 @@ def check_naming_convention(users, provisioned_products):
                 expected_name = f"{user_exists['first_name']}-{user_exists['last_name']}-{product_name}"
                 provided_name = product.get('Name', '')
                 if provided_name !=  expected_name:
-                    non_conforming_products.append({'index': counter, 'provided_name': provided_name, 'expected_name': expected_name, 'email': user_exists['email'], 'reason': 'Naming convention not followed', 'product_info': product})
+                    non_conforming_products.append({'error':'naming convention violated','index': counter, 'provided_name': provided_name, 'expected_name': expected_name, 'email': user_exists['email'], 'reason': 'Naming convention not followed', 'product_info': product, 'user_info': user_exists})
                     counter += 1
         return non_conforming_products
     except Exception as e:
@@ -224,6 +222,7 @@ def get_unauthorized_users(users, provisioned_products):
     try:
         for index, product in enumerate(provisioned_products['ProvisionedProducts']):
             # Extract user email from ARN session
+            
             arn_session = product.get('UserArnSession', '')
             email = arn_session.split('/')[-1]
             
@@ -231,9 +230,24 @@ def get_unauthorized_users(users, provisioned_products):
             user_exists = next((user for user in users if user['email'] == email), None)
             
             if not user_exists:
-                non_conforming_products.append({'index': counter, 'email': email, 'reason': 'User does not exist in the list of users', 'product_info': product})
+                user_info = extract_user_info(product)
+                non_conforming_products.append({'error': 'unauthorised product launch','index': counter, 'email': email, 'user_info': user_info, 'reason': 'User does not exist in the list of users', 'product_info': product})
                 counter += 1
         return non_conforming_products
     except Exception as e:
         logging.error(f"Error checking unauthorized users: {e}")
         return None
+
+def extract_properties(stale_products, properties):
+    extracted_products = []
+    for product in stale_products:
+        extracted_product = {}
+        for prop in properties:
+            value = product.get(prop)
+            if isinstance(value, datetime):
+                # Convert datetime objects to ISO 8601 formatted strings
+                value = value.isoformat()
+            extracted_product[prop] = value
+        extracted_products.append(extracted_product)
+    return extracted_products
+
