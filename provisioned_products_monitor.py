@@ -7,15 +7,15 @@ import logging
 from datetime import datetime, timedelta, timezone
 import json
 from dotenv import load_dotenv
+from config import *
 
 logging.basicConfig(level=logging.INFO)
 
-    
 def initialize_service_catalog_client():
     """Initialize AWS ServiceCatalog client."""
     return boto3.client('servicecatalog', region_name='ap-south-1')
 
-def get_threshold_time(hours=8):
+def get_threshold_time(hours=STALE_PRODUCT_THRESHOLD_HOURS):
     """Return the time threshold."""
     return datetime.now(timezone.utc) - timedelta(hours=hours)
 
@@ -93,7 +93,7 @@ def get_duration_in_days(duration_hours):
     else:
         return f"{duration_hours:.2f} hours"  # Display duration in hours
         
-def track_user_launches(response, threshold=1):
+def track_user_launches(response, threshold=HIGH_PRODUCT_COUNT_THRESHOLD):
     """Count the number of provisioned products for each user."""
     users = []
 

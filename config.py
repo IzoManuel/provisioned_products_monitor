@@ -1,13 +1,8 @@
-import os
+# Threshold duration (in days) for identifying stale provisioned products
+STALE_PRODUCT_THRESHOLD_HOURS = 500
 
-ENVIRONMENT = 'local'
-# Define base directory paths
-PRODUCTION_BASE_DIR = "/var/www/html/"
-LOCAL_BASE_DIR = "./"
+# Threshold count for identifying users with a high number of provisioned products
+HIGH_PRODUCT_COUNT_THRESHOLD = 2
 
-def get_base_dir():
-    """Return the appropriate base directory path based on the environment."""
-    if ENVIRONMENT == "production":
-        return PRODUCTION_BASE_DIR
-    else:
-        return LOCAL_BASE_DIR
+
+SLACK_WEBHOOK_URL="https://hooks.slack.com/services/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"

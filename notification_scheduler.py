@@ -33,7 +33,7 @@ def unauthorized_users_notification(users_from_s3, response, webhook_url):
 
 
 def main():
-    webhook_url = ' https://hooks.slack.com/services/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'
+    webhook_url = SLACK_WEBHOOK_URL
 
     sc_client = initialize_service_catalog_client()
 

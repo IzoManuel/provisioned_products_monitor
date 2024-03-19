@@ -38,8 +38,11 @@ def stale_provisioned_products():
         # Get unauthorized users
         unauthorized_users = get_unauthorized_users(users_from_s3, response)
 
+        # Stale product threeshold time
+        stale_product_threeshold_time = STALE_PRODUCT_THRESHOLD_HOURS
+
         # Render template with data
-        return render_template('dashboard.html', stale_products=stale_products, users=users, name_disc_products=name_disc_products, unauthorized_users=unauthorized_users)
+        return render_template('dashboard.html', stale_products=stale_products, users=users, name_disc_products=name_disc_products, unauthorized_users=unauthorized_users, stale_product_threeshold_time=stale_product_threeshold_time)
     
     except Exception as e:
         logging.error(f"An error occurred: {str(e)}")
