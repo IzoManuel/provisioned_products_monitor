@@ -1,5 +1,5 @@
 # Threshold duration (in days) for identifying stale provisioned products
-STALE_PRODUCT_THRESHOLD_HOURS = 500
+STALE_PRODUCT_THRESHOLD_HOURS = 8
 
 # Threshold count for identifying users with a high number of provisioned products
 HIGH_PRODUCT_COUNT_THRESHOLD = 2

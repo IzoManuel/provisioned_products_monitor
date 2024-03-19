@@ -35,4 +35,4 @@ The AWS Provisioned Products Monitoring System is a robust solution designed to 
 - Customize the `dashboard.html` template in the `templates` folder to modify the appearance of the dashboard as needed.
 - The `provisioned_products_monitor.py` file contains functions for querying provisioned products. Modify this file to extend or customize the monitoring functionality.
 - For production deployment, configure appropriate security settings, such as HTTPS, and consider deploying the application on a secure server environment.
-- Monitor logs and error messages for any issues during application execution, and handle exceptions gracefully to ensure smooth operation.
+- Monitor logs and error messages for any issues during application execution

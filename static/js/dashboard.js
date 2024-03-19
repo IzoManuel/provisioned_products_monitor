@@ -6,7 +6,7 @@ function showProductDetailsForRow(index) {
   let detailsDiv = document.getElementById("selectedProductItemDetails");
 
   detailsDiv.innerHTML = `<p><strong class="text-gray-600">Product Name:</strong> ${selectedProduct.Name}</p>
-                             <p><strong class="text-gray-600 text-red-500">Duration:</strong> ${selectedProduct.duration}</p>
+                             <p><strong class="text-gray-600">Duration:</strong> ${selectedProduct.duration}</p>
                              <p><strong class="text-gray-600">Status:</strong> ${selectedProduct.Status}</p>`;
   // Define selectedItemDetailsRow
   let selectedProductItemDetailsRow = document.getElementById(
