@@ -1,0 +1,18 @@
+<div class="container mt-10 text-sm">
+    <div class="row">
+        {% for product_name, product_details in product_summary.items() %}
+        <div class="col-sm-6 col-md-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-gray-600">{{ product_name }}</h5>
+                    <p class="card-text"><span class="text-gray-600">Total Products:</span> {{ product_details.total_products }}</p>
+                    <p class="card-text"><span class="text-gray-600">Stale Products:</span> {{ product_details.stale_products }}</p>
+                    <p class="card-text"><span class="text-gray-600">User Launches:</span> {{ product_details.user_launches }}</p>
+                    <p class="card-text"><span class="text-gray-600">Naming Discrepancies:</span> {{ product_details.naming_discrepancies }}</p>
+                    <p class="card-text"><span class="text-gray-600">Unauthorized Launches:</span> {{ product_details.unauthorized_launches }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -93,7 +93,7 @@ def get_duration_in_days(duration_hours):
     else:
         return f"{duration_hours:.2f} hours"  # Display duration in hours
         
-def track_user_launches(response, threshold=HIGH_PRODUCT_COUNT_THRESHOLD):
+def track_user_launches2(response, threshold=HIGH_PRODUCT_COUNT_THRESHOLD):
     """Count the number of provisioned products for each user."""
     users = []
 
@@ -195,21 +195,11 @@ def check_naming_convention(users, provisioned_products):
     counter = 0
     try:
         for index, product in enumerate(provisioned_products['ProvisionedProducts']):
-            # Extract user email from ARN session
-            arn_session = product.get('UserArnSession', '')
-            email = arn_session.split('/')[-1]
-            
-            # Check if the email exists in the list of users
-            user_exists = next((user for user in users if user['email'] == email), None)
-            # Check naming convention
-            product_name = product.get('ProductName', '')
+            naming_discrepancy = has_naming_discrepancies(product, users, counter)
+            if naming_discrepancy:
 
-            if user_exists:
-                expected_name = f"{user_exists['first_name']}-{user_exists['last_name']}-{product_name}"
-                provided_name = product.get('Name', '')
-                if provided_name !=  expected_name:
-                    non_conforming_products.append({'error':'naming convention violated','index': counter, 'provided_name': provided_name, 'expected_name': expected_name, 'email': user_exists['email'], 'reason': 'Naming convention not followed', 'product_info': product, 'user_info': user_exists})
-                    counter += 1
+                non_conforming_products.append(naming_discrepancy)
+                counter += 1
         return non_conforming_products
     except Exception as e:
         logging.error(f"Error checking naming convention: {e}")
@@ -221,17 +211,9 @@ def get_unauthorized_users(users, provisioned_products):
     counter = 0
     try:
         for index, product in enumerate(provisioned_products['ProvisionedProducts']):
-            # Extract user email from ARN session
-            
-            arn_session = product.get('UserArnSession', '')
-            email = arn_session.split('/')[-1]
-            
-            # Check if the email exists in the list of users
-            user_exists = next((user for user in users if user['email'] == email), None)
-            
-            if not user_exists:
-                user_info = extract_user_info(product)
-                non_conforming_products.append({'error': 'unauthorised product launch','index': counter, 'email': email, 'user_info': user_info, 'reason': 'User does not exist in the list of users', 'product_info': product})
+            unauthorized_product = has_unauthorized_launches(product, users, counter)
+            if unauthorized_product:
+                non_conforming_products.append(unauthorized_product)
                 counter += 1
         return non_conforming_products
     except Exception as e:
@@ -251,3 +233,152 @@ def extract_properties(stale_products, properties):
         extracted_products.append(extracted_product)
     return extracted_products
 
+def generate_product_summary(response, users):
+    product_summary = {}
+    threshold_time = get_threshold_time()
+
+    for product_view_detail in response['ProvisionedProducts']:
+        product_name = product_view_detail.get('ProductName', '')
+
+        if product_name not in product_summary:
+            product_summary[product_name] = {
+                'total_products': 0,
+                'stale_products': 0,
+                'user_launches': 0,
+                'naming_discrepancies': 0,
+                'unauthorized_launches': 0
+            }
+        
+        product_summary[product_name]['total_products'] += 1
+
+        # Check if the product is stale
+        if is_stale_product(product_view_detail, threshold_time):
+            product_summary[product_name]['stale_products'] += 1
+
+        # Check if the product has user launches
+        if has_user_launches(product_view_detail, users):
+            product_summary[product_name]['user_launches'] += 1
+
+        # Check if the product has naming discrepancies
+        if has_naming_discrepancies(product_view_detail, users):
+            product_summary[product_name]['naming_discrepancies'] += 1
+
+        # Check if the product has unauthorized launches
+        if has_unauthorized_launches(product_view_detail, users):
+            product_summary[product_name]['unauthorized_launches'] += 1
+
+    return product_summary
+
+def is_stale_product(product_view_detail, threshold_time):
+    """Check if a product is stale based on the threshold time."""
+    try:
+        provisioned_time_str = product_view_detail['CreatedTime']
+        if isinstance(provisioned_time_str, str):  # Check if provisioned_time_str is a string
+            provisioned_time = datetime.strptime(
+                provisioned_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+        else:
+            provisioned_time = provisioned_time_str  # If it's already a datetime object, use it directly
+
+        return provisioned_time < threshold_time
+    except Exception as e:
+        logging.error(f"Error checking stale product: {e}")
+        return False
+
+def has_user_launches(product_view_detail, users, threshold=HIGH_PRODUCT_COUNT_THRESHOLD):
+    """Check if a product has user launches greater than or equal to the threshold."""
+    try:
+        user_arn_session = product_view_detail['UserArnSession']
+        email = user_arn_session.split('/')[-1]  # Extract email from the ARN
+        user_count = sum(1 for user in users if user['email'] == email)
+        return user_count >= threshold
+    except Exception as e:
+        logging.error(f"Error checking user launches: {e}")
+        return False
+
+def has_naming_discrepancies(product_view_detail, users, counter=None):
+    """Check if a product has naming discrepancies."""
+    try:
+        arn_session = product_view_detail.get('UserArnSession', '')
+        email = arn_session.split('/')[-1]
+
+        # Check if the email exists in the list of users
+        user_exists = next((user for user in users if user['email'] == email), None)
+        # Check naming convention
+        product_name = product_view_detail.get('ProductName', '')
+
+        if user_exists:
+            expected_name = f"{user_exists['first_name']}-{user_exists['last_name']}-{product_name}"
+            provided_name = product_view_detail.get('Name', '')
+            if provided_name !=  expected_name:
+                return {'error':'naming convention violated','index': counter, 'provided_name': provided_name, 'expected_name': expected_name, 'email': user_exists['email'], 'reason': 'Naming convention not followed', 'product_info': product_view_detail, 'user_info': user_exists}
+            else:
+                return None
+        else:
+            return None
+    except Exception as e:
+        logging.error(f"Error checking naming discrepancies: {e}")
+        return None
+
+def has_unauthorized_launches(product, users, counter=None):
+    """Check if a product has unauthorized launches."""
+    try:
+        arn_session = product.get('UserArnSession', '')
+        email = arn_session.split('/')[-1]
+
+        # Check if the email exists in the list of users
+        user_exists = next((user for user in users if user['email'] == email), None)
+        
+        if not user_exists:
+            user_info = extract_user_info(product)
+            if counter is not None:
+                return {'error': 'unauthorised product launch','index': counter, 'email': email, 'user_info': user_info, 'reason': 'User does not exist in the list of users', 'product_info': product}
+            else:
+                return {'error': 'unauthorised product launch', 'email': email, 'user_info': user_info, 'reason': 'User does not exist in the list of users', 'product_info': product}
+        else:
+            return None
+    except Exception as e:
+        logging.error(f"Error checking unauthorized users: {e}")
+        return None
+
+def track_user_launches(response, threshold=HIGH_PRODUCT_COUNT_THRESHOLD):
+    """Count the number of provisioned products for each user."""
+    users = []
+
+    # Create a dictionary to store the count for each user
+    user_products = {}
+
+    # Group products by user email
+    for product_view_detail in response['ProvisionedProducts']:
+        user_arn_session = product_view_detail['UserArnSession']
+        email = user_arn_session.split('/')[-1]  # Extract email from the ARN
+        if email in user_products:
+            user_products[email].append(product_view_detail)
+        else:
+            user_products[email] = [product_view_detail]
+
+    # Loop through the user products and count the number for each user
+    counter = 0
+    for email, products in user_products.items():
+        product_count = len(products)
+        if product_count >= threshold:
+            user_info = extract_user_info(products[0])  # Assuming all products belong to the same user
+            users.append({
+                'message': 'number of products launched',
+                'index': counter,
+                'email': email,
+                'product_count': product_count,
+                'product_info': products,  # All products belonging to the user
+                'user_info': user_info
+            })
+            counter += 1
+
+    return users
+
+
+# Usage
+# Fetch user info from S3
+users_from_s3 = fetch_user_info_from_s3()
+sc_client = initialize_service_catalog_client()
+response = query_provisioned_products(sc_client)
+product_summary = generate_product_summary(response, users_from_s3)
+print(json.dumps(product_summary, indent=4))

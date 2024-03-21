@@ -41,8 +41,13 @@ def stale_provisioned_products():
         # Stale product threeshold time
         stale_product_threeshold_time = STALE_PRODUCT_THRESHOLD_HOURS
 
+        # Provisioned product threshold count
+        high_product_count_threshold = HIGH_PRODUCT_COUNT_THRESHOLD
+
+        product_summary = generate_product_summary(response, users_from_s3)
+
         # Render template with data
-        return render_template('dashboard.html', stale_products=stale_products, users=users, name_disc_products=name_disc_products, unauthorized_users=unauthorized_users, stale_product_threeshold_time=stale_product_threeshold_time)
+        return render_template('dashboard.html', stale_products=stale_products, users=users, name_disc_products=name_disc_products, unauthorized_users=unauthorized_users, stale_product_threeshold_time=stale_product_threeshold_time, product_summary = product_summary, high_product_count_threshold=high_product_count_threshold)
     
     except Exception as e:
         logging.error(f"An error occurred: {str(e)}")
