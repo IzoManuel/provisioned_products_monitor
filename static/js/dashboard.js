@@ -22,6 +22,7 @@ function showProductDetailsForRow(index) {
   // Check if selectedItemDetailsRow is defined before setting its display property
   if (selectedProductItemDetailsRow) {
     selectedProductItemDetailsRow.style.display = "block";
+    showToast("Scroll downwards to view additional details.");
   } else {
     console.error("selectedItemDetailsRow is undefined");
   }
@@ -49,6 +50,7 @@ function showUserDetailsForRow(index) {
   // Check if selectedItemDetailsRow is defined before setting its display property
   if (selectedUserItemDetailsRow) {
     selectedUserItemDetailsRow.style.display = "block";
+    showToast("Scroll downwards to view additional details.");
   } else {
     console.error("selectedItemDetailsRow is undefined");
   }
@@ -76,6 +78,7 @@ function showNameDiscDetailsForRow(index) {
   // Check if selectedItemDetailsRow is defined before setting its display property
   if (selectedNameDiscItemDetailsRow) {
     selectedNameDiscItemDetailsRow.style.display = "block";
+    showToast("Scroll downwards to view additional details.");
   } else {
     console.error("selectedNameDiscItemDetailsRow is undefined");
   }
@@ -102,10 +105,24 @@ function showUnauthUserDetailsForRow(index) {
   // Check if selectedItemDetailsRow is defined before setting its display property
   if (selectedUnauthUserItemDetailsRow) {
     selectedUnauthUserItemDetailsRow.style.display = "block";
+    showToast("Scroll downwards to view additional details.");
   } else {
     console.error("selectedUnauthUserItemDetailsRow is undefined");
   }
 }
+
+// Function to show toast notification
+function showToast(message) {
+  // Get the toast element
+  let toastElement = document.getElementById("liveToast");
+  // Update the toast message
+  let toastBody = toastElement.querySelector(".toast-body");
+  toastBody.textContent = message;
+  // Show the toast
+  let toast = new bootstrap.Toast(toastElement);
+  toast.show();
+}
+
 
 // Listen for radio button changes
 document.querySelectorAll(".radio").forEach((radio) => {

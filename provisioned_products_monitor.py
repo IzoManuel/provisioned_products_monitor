@@ -44,7 +44,6 @@ def query_provisioned_products(sc_client):
         logging.error(f"Error querying provisioned products: {e}")
         return None
 
-
 def fetch_user_info_from_s3():
     """Fetch user information from either S3 or a local JSON file."""
     try:
@@ -83,6 +82,48 @@ def send_slack_notification(webhook_url, message_content):
     except Exception as e:
         logging.error(f"Error sending Slack notification: {e}")
 
+def send_email_notification(from_email, to_email, subject, body, csv_data=None, cc=None):
+    try:
+        smtp_server = 'smtp.gmail.com'
+        smtp_port = 587
+        smtp_username = 'israel7manuel@gmail.com'
+        smtp_password = 'nlol mujs xssw rpon'
+
+        # Create a multipart message
+        msg = MIMEMultipart()
+        msg['From'] = from_email
+        msg['To'] = ', '.join(to_email)
+        msg['Subject'] = subject
+
+        # Add CC recipients if provided
+        if cc:
+            msg['Cc'] = ', '.join(cc)
+            to_email += cc
+
+        # Add body to email
+        msg.attach(MIMEText(body, 'plain'))
+
+        # Attach CSV file
+        if csv_data:
+            # Convert CSV data to string
+            csv_content = '\n'.join([','.join(row) for row in csv_data])
+
+            attachment = MIMEBase('text', 'csv')
+            attachment.set_payload(csv_content.encode('utf-8'))
+            attachment.add_header('Content-Disposition',
+                                  f'attachment; filename="{subject}.csv"')
+            encoders.encode_base64(attachment)
+            msg.attach(attachment)
+
+        # Connect to SMTP server and send email
+        with smtplib.SMTP(smtp_server, smtp_port) as smtp:
+            smtp.starttls()
+            smtp.login(smtp_username, smtp_password)
+            smtp.sendmail(from_email, to_email, msg.as_string())
+
+        logging.info('Email sent successfully!')
+    except Exception as e:
+        logging.error(f'Error sending email: {e}')
 
 def get_duration_in_days(duration_hours):
     """Return the duration in days."""
@@ -144,8 +185,6 @@ def get_stale_provisioned_products(response, threshold_time):
         logging.error(f"Error getting stale provisioned products: {e}")
         return None
 
-    
-    
 def extract_users_infos(response):
     """Extract first name, last name, and email from the response."""
     user_info = []
@@ -179,7 +218,6 @@ def extract_user_info(product_view_detail):
         logging.error(f"Error extracting user info: {e}")
         return None
 
-    
 def write_info_to_json(info, filename):
     """Write user information extracted from the response to a JSON file."""
     try:
@@ -188,7 +226,7 @@ def write_info_to_json(info, filename):
         logging.info(f"User information written to file: {filename}")
     except Exception as e:
         logging.error(f"Error writing user info to JSON file: {e}")
-        
+
 def check_naming_convention(users, provisioned_products):
     """Check naming convention and user existence."""
     non_conforming_products = []
@@ -373,12 +411,3 @@ def track_user_launches(response, threshold=HIGH_PRODUCT_COUNT_THRESHOLD):
             counter += 1
 
     return users
-
-
-# Usage
-# Fetch user info from S3
-users_from_s3 = fetch_user_info_from_s3()
-sc_client = initialize_service_catalog_client()
-response = query_provisioned_products(sc_client)
-product_summary = generate_product_summary(response, users_from_s3)
-print(json.dumps(product_summary, indent=4))

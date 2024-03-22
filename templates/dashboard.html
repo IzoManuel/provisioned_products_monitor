@@ -40,6 +40,9 @@
     <div class="container">
         {% include 'product-sum-cards.html' %}
         <div class="mt-8">
+            <div>
+                {% include 'toast.html' %}
+            </div>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn-secondary active text-gray-500" id="pills-stale-tab" data-toggle="pill"
@@ -56,24 +59,24 @@
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link btn-secondary text-gray-500" id="pills-contact-tab" data-toggle="pill"
+                    <button class="nav-link btn-secondary text-gray-500" id="pills-discrepancy-tab" data-toggle="pill"
                         data-target="#pills-discrepancy" type="button" role="tab" aria-controls="pills-discrepancy"
                         aria-selected="false">
                         Naming Discrepancies
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link btn-secondary text-gray-500" id="pills-contact-tab" data-toggle="pill"
+                    <button class="nav-link btn-secondary text-gray-500" id="pills-unauthorized-tab" data-toggle="pill"
                         data-target="#pills-unauthorized" type="button" role="tab" aria-controls="pills-unauthorized"
                         aria-selected="false">
                         Unauthorised product launches
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link btn-secondary text-gray-500" id="pills-contact-tab" data-toggle="pill"
-                        data-target="#pills-unauthorized" type="button" role="tab" aria-controls="pills-unauthorized"
+                    <button class="nav-link btn-secondary text-gray-500" id="pills-notification-tab" data-toggle="pill"
+                        data-target="#pills-notification" type="button" role="tab" aria-controls="pills-notification"
                         aria-selected="false">
-                        Unauthorised product launches
+                        Email Notifications
                     </button>
                 </li>
             </ul>
