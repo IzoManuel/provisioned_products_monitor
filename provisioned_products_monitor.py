@@ -8,6 +8,12 @@ from datetime import datetime, timedelta, timezone
 import json
 from dotenv import load_dotenv
 from config import *
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
+from email.mime.base import MIMEBase
+from email import encoders
 
 logging.basicConfig(level=logging.INFO)
 
@@ -24,7 +30,6 @@ def query_provisioned_products(sc_client):
     try:
         load_dotenv()  # Load environment variables from .env file
         environment = os.getenv('ENV')
-
         if environment == 'local':
             # Load provisioned products from JSON file
             with open('provisioned_products.json', 'r') as file:
@@ -52,7 +57,6 @@ def fetch_user_info_from_s3():
 
         # Check if running locally or in production
         environment = os.getenv('ENV')
-
         if environment == 'local':
             # Load user information from a local JSON file
             with open('user_info.json', 'r') as file:
@@ -124,7 +128,34 @@ def send_email_notification(from_email, to_email, subject, body, csv_data=None, 
         logging.info('Email sent successfully!')
     except Exception as e:
         logging.error(f'Error sending email: {e}')
+        raise e
 
+def send_custom_email(email, check):
+    try:
+        # Specify email details based on the type of email
+        from_email = 'israel7manuel@gmail.com'
+        to_email = email
+        subject = 'Your Provisioned Product Alert'
+        if check == "stale":
+            subject = 'Stale Provisioned Products Alert'
+            body = 'This is to notify you that you currently have stale products. Please login into you deploy guru aws account and terminate.'
+        elif check == "unauthorized":
+            subject = 'Unauthorized Provisioned Product Alert'
+            body = 'This is to notify you that you currently unauthorised to launch a product. Please login into you deploy guru aws account and terminate.'
+        elif check == "launches":
+            subject = 'Threeshold Exceeded Alert'
+            body = 'This is to notify you that you have currently exceeded the threshold for launched products per person. Please login into you deploy guru aws account and terminate.'
+        elif check == "name-disc":
+            subject = 'Naming Discrepancy Provisioned Product Alert'
+            body = 'This is to notify you that you have broken the naming convention when provisioning you product. Please login into you deploy guru aws account and terminate.'
+        else:
+            # Single email
+            body = 'This is to notify you about your provisioned product.'
+
+        send_email_notification(from_email, to_email, subject, body)
+    except Exception as e:
+        raise e
+    
 def get_duration_in_days(duration_hours):
     """Return the duration in days."""
     if duration_hours >= 24:
@@ -282,7 +313,6 @@ def generate_product_summary(response, users):
             product_summary[product_name] = {
                 'total_products': 0,
                 'stale_products': 0,
-                'user_launches': 0,
                 'naming_discrepancies': 0,
                 'unauthorized_launches': 0
             }
@@ -292,10 +322,6 @@ def generate_product_summary(response, users):
         # Check if the product is stale
         if is_stale_product(product_view_detail, threshold_time):
             product_summary[product_name]['stale_products'] += 1
-
-        # Check if the product has user launches
-        if has_user_launches(product_view_detail, users):
-            product_summary[product_name]['user_launches'] += 1
 
         # Check if the product has naming discrepancies
         if has_naming_discrepancies(product_view_detail, users):

@@ -1,33 +1,43 @@
-<div class="table-responsive table-height border-bottom">
-    <table class="table table-bordered">
-        <thead class="thead-dark sticky">
-            <tr class="text-sm">
-                <th></th>
-                <th scope="col">Conflicting Name</th>
-                <th scope="col">Expected Name</th>
-                <th scope="col">User email</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for name_disc_product in name_disc_products %}
-            <tr class="text-sm">
-                <td>
-                    <input type="radio" class="radio" name="selectedNameDisc"
-                        id="radio{{ name_disc_product.index }}"
-                        onchange="showNameDiscDetailsForRow({{ name_disc_product.index }})" data-type="name-disc-product"/>
-                </td>
-                <td>{{ name_disc_product.provided_name }}</td>
-                <td>{{ name_disc_product.expected_name }}</td>
-                <td>{{ name_disc_product.email }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+<div>
+    <div class="flex justify-end">
+        <button class=" btn bg-warning h-10 mb-2 text-sm font-semibold" id="nameDiscEmailButton"
+            onclick="confirmBulkEmail(disc_emails, 'name-disc')">Send bulk
+            email alert</button>
+    </div>
 
-<div id="selectedNameDiscItemDetailsRow" style="display: none" class="">
-    <h6 class="mt-6 font-weight-bold mb-3 text-gray-600">Details</h6>
-    <div id="selectedNameDiscItemDetails" class="border rounded-sm bg-gray-50 p-3 text-sm"></div>
-    <h6 class="mt-4 font-weight-bold mb-3 text-gray-600">Full response</h6>
-    <pre class="formatted-json border rounded-sm bg-gray-50 p-3 text-sm" id="selectedNameDiscItemFormattedJSON"></pre>
+    <div class="table-responsive table-height border-bottom">
+        <table class="table table-bordered">
+            <thead class="thead-dark sticky">
+                <tr class="text-sm">
+                    <th></th>
+                    <th scope="col">Conflicting Name</th>
+                    <th scope="col">Expected Name</th>
+                    <th scope="col">User email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for name_disc_product in name_disc_products %}
+                <tr class="text-sm">
+                    <td>
+                        <input type="radio" class="radio" name="selectedNameDisc"
+                            id="radio{{ name_disc_product.index }}"
+                            onchange="showNameDiscDetailsForRow({{ name_disc_product.index }})"
+                            data-type="name-disc-product" />
+                    </td>
+                    <td>{{ name_disc_product.provided_name }}</td>
+                    <td>{{ name_disc_product.expected_name }}</td>
+                    <td>{{ name_disc_product.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="selectedNameDiscItemDetailsRow" style="display: none" class="">
+        <h6 class="mt-6 font-weight-bold mb-3 text-gray-600">Details</h6>
+        <div id="selectedNameDiscItemDetails" class="border rounded-sm bg-gray-50 p-3 text-sm flex justify-between"></div>
+        <h6 class="mt-4 font-weight-bold mb-3 text-gray-600">Full response</h6>
+        <pre class="formatted-json border rounded-sm bg-gray-50 p-3 text-sm"
+            id="selectedNameDiscItemFormattedJSON"></pre>
+    </div>
 </div>

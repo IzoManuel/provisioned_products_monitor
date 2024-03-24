@@ -43,40 +43,33 @@
             <div>
                 {% include 'toast.html' %}
             </div>
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link btn-secondary active text-gray-500" id="pills-stale-tab" data-toggle="pill"
+            <ul class="nav nav-pills mb-3 text-sm font-semibold" id="pills-tab" role="tablist">
+                <li class="nav-item mr-3" role="presentation">
+                    <button class="nav-link btn-warning active text-gray-500" id="pills-stale-tab" data-toggle="pill"
                         data-target="#pills-stale" type="button" role="tab" aria-controls="pills-stale"
-                        aria-selected="true">
+                        aria-selected="true" onclick="resetIsConfirming()">
                         Stale products ({{stale_product_threeshold_time}} hrs)
                     </button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link btn-secondary text-gray-500" id="pills-launches-tab" data-toggle="pill"
+                <li class="nav-item mr-3" role="presentation">
+                    <button class="nav-link btn-warning text-gray-500" id="pills-launches-tab" data-toggle="pill"
                         data-target="#pills-launches" type="button" role="tab" aria-controls="pills-launches"
-                        aria-selected="false">
+                        aria-selected="false" onclick="resetIsConfirming()">
                         User's Launched products ({{high_product_count_threshold}})
                     </button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link btn-secondary text-gray-500" id="pills-discrepancy-tab" data-toggle="pill"
+                <li class="nav-item mr-3" role="presentation">
+                    <button class="nav-link btn-warning text-gray-500" id="pills-discrepancy-tab" data-toggle="pill"
                         data-target="#pills-discrepancy" type="button" role="tab" aria-controls="pills-discrepancy"
-                        aria-selected="false">
+                        aria-selected="false" onclick="resetIsConfirming()">
                         Naming Discrepancies
                     </button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link btn-secondary text-gray-500" id="pills-unauthorized-tab" data-toggle="pill"
+                <li class="nav-item mr-3" role="presentation">
+                    <button class="nav-link btn-warning text-gray-500" id="pills-unauthorized-tab" data-toggle="pill"
                         data-target="#pills-unauthorized" type="button" role="tab" aria-controls="pills-unauthorized"
-                        aria-selected="false">
+                        aria-selected="false" onclick="resetIsConfirming()">
                         Unauthorised product launches
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link btn-secondary text-gray-500" id="pills-notification-tab" data-toggle="pill"
-                        data-target="#pills-notification" type="button" role="tab" aria-controls="pills-notification"
-                        aria-selected="false">
-                        Email Notifications
                     </button>
                 </li>
             </ul>
