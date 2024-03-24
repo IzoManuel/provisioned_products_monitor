@@ -65,7 +65,7 @@ def fetch_user_info_from_s3():
             # Fetch user information from S3
             s3_client = boto3.client('s3')
             bucket_name = 'dg-cohort-01'
-            file_key = 'team_israel_users_info.json'
+            file_key = 'team_israel_user_info3.json'
             response = s3_client.get_object(Bucket=bucket_name, Key=file_key)
             user_info = json.loads(response['Body'].read().decode('utf-8'))
         
