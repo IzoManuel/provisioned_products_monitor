@@ -48,7 +48,7 @@ function appendEmailButton(detailsDiv, userEmail) {
   // Create the email button
   let emailButton = document.createElement("button");
   emailButton.textContent = "Send email alert";
-  emailButton.className = "btn bg-warning font-semibold h-10";
+  emailButton.className = "btn bg-warning font-semibold text-sm h-10";
 
   // Add event listener to the button
   emailButton.addEventListener("click", function () {

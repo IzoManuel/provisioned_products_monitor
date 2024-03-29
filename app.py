@@ -3,7 +3,7 @@
 import logging
 from flask import *
 from jinja2 import Environment, FileSystemLoader
-from config import *
+import config
 from provisioned_products_monitor import *
 
 # Configure logging
@@ -40,16 +40,10 @@ def stale_provisioned_products():
         # Get unauthorized users
         unauthorized_users = get_unauthorized_users(users_from_s3, response)
 
-        # Stale product threeshold time
-        stale_product_threeshold_time = STALE_PRODUCT_THRESHOLD_HOURS
-
-        # Provisioned product threshold count
-        high_product_count_threshold = HIGH_PRODUCT_COUNT_THRESHOLD
-
         product_summary = generate_product_summary(response, users_from_s3)
 
         # Render template with data
-        return render_template('dashboard.html', stale_products=stale_products, users=users, name_disc_products=name_disc_products, unauthorized_users=unauthorized_users, stale_product_threeshold_time=stale_product_threeshold_time, product_summary=product_summary, high_product_count_threshold=high_product_count_threshold)
+        return render_template('dashboard.html', stale_products=stale_products, users=users, name_disc_products=name_disc_products, unauthorized_users=unauthorized_users, stale_product_threeshold_time=config.stale_product_threshold_hours, product_summary=product_summary, high_product_count_threshold=config.high_product_count_threshold)
 
     except Exception as e:
         logging.error(f"An error occurred: {str(e)}")

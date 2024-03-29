@@ -7,7 +7,7 @@ import logging
 from datetime import datetime, timedelta, timezone
 import json
 from dotenv import load_dotenv
-from config import *
+import config
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -16,20 +16,21 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 logging.basicConfig(level=logging.INFO)
+# Load environment variables from .env file
+load_dotenv()
 
 def initialize_service_catalog_client():
     """Initialize AWS ServiceCatalog client."""
     return boto3.client('servicecatalog', region_name='ap-south-1')
 
-def get_threshold_time(hours=STALE_PRODUCT_THRESHOLD_HOURS):
+def get_threshold_time(hours=config.stale_product_threshold_hours):
     """Return the time threshold."""
     return datetime.now(timezone.utc) - timedelta(hours=hours)
 
 def query_provisioned_products(sc_client):
     """Query provisioned products."""
     try:
-        load_dotenv()  # Load environment variables from .env file
-        environment = os.getenv('ENV')
+        environment = os.environ.get('ENV')
         if environment == 'local':
             # Load provisioned products from JSON file
             with open('provisioned_products.json', 'r') as file:
@@ -56,7 +57,7 @@ def fetch_user_info_from_s3():
         load_dotenv()
 
         # Check if running locally or in production
-        environment = os.getenv('ENV')
+        environment = os.environ.get('ENV')
         if environment == 'local':
             # Load user information from a local JSON file
             with open('user_info.json', 'r') as file:
@@ -64,8 +65,8 @@ def fetch_user_info_from_s3():
         else:
             # Fetch user information from S3
             s3_client = boto3.client('s3')
-            bucket_name = 'dg-cohort-01'
-            file_key = 'team_israel_user_info3.json'
+            bucket_name = config.bucket_name
+            file_key = config.file_key
             response = s3_client.get_object(Bucket=bucket_name, Key=file_key)
             user_info = json.loads(response['Body'].read().decode('utf-8'))
         
@@ -88,10 +89,10 @@ def send_slack_notification(webhook_url, message_content):
 
 def send_email_notification(from_email, to_email, subject, body, csv_data=None, cc=None):
     try:
-        smtp_server = 'smtp.gmail.com'
-        smtp_port = 587
-        smtp_username = 'israel7manuel@gmail.com'
-        smtp_password = 'nlol mujs xssw rpon'
+        smtp_server = os.environ.get('SMTP_SERVER')
+        smtp_port = os.environ.get("SMTP_PORT")
+        smtp_username = os.environ.get("SMTP_USERNAME")
+        smtp_password = os.environ.get("SMTP_PASSWORD")
 
         # Create a multipart message
         msg = MIMEMultipart()
@@ -165,7 +166,7 @@ def get_duration_in_days(duration_hours):
     else:
         return f"{duration_hours:.2f} hours"  # Display duration in hours
         
-def track_user_launches2(response, threshold=HIGH_PRODUCT_COUNT_THRESHOLD):
+def track_user_launches2(response, threshold=config.high_product_count_threshold):
     """Count the number of provisioned products for each user."""
     users = []
 
@@ -348,7 +349,7 @@ def is_stale_product(product_view_detail, threshold_time):
         logging.error(f"Error checking stale product: {e}")
         return False
 
-def has_user_launches(product_view_detail, users, threshold=HIGH_PRODUCT_COUNT_THRESHOLD):
+def has_user_launches(product_view_detail, users, threshold=config.high_product_count_threshold):
     """Check if a product has user launches greater than or equal to the threshold."""
     try:
         user_arn_session = product_view_detail['UserArnSession']
@@ -404,7 +405,7 @@ def has_unauthorized_launches(product, users, counter=None):
         logging.error(f"Error checking unauthorized users: {e}")
         return None
 
-def track_user_launches(response, threshold=HIGH_PRODUCT_COUNT_THRESHOLD):
+def track_user_launches(response, threshold=config.high_product_count_threshold):
     """Count the number of provisioned products for each user."""
     users = []
 

@@ -14,6 +14,7 @@ The AWS Provisioned Products Monitoring System is a robust solution designed to 
 1. Clone the repository to your local or remote machine.
 2. Set up AWS credentials with appropriate permissions.
 3. Navigate to the project directory.
+4.sudo apt install python3-pip
 4. Install the required Python packages using `pip install -r requirements.txt`.
 5. Run the Flask application by executing `python3 app.py`.
 6. Access the application by visiting the provided IP address in your web browser. You will be directed to the dashboard page where all the features are available.
