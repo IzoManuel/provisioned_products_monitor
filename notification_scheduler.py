@@ -2,7 +2,10 @@
 
 import logging
 from provisioned_products_monitor import *
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 def send_stale_products_notification(response, threshold_time, webhook_url):
     stale_products = get_stale_provisioned_products(response, threshold_time)
@@ -33,7 +36,7 @@ def unauthorized_users_notification(users_from_s3, response, webhook_url):
 
 
 def main():
-    webhook_url = SLACK_WEBHOOK_URL
+    webhook_url = os.environ.get("SLACK_WEBHOOK_URL")
 
     sc_client = initialize_service_catalog_client()
 
