@@ -9,20 +9,24 @@ The AWS Provisioned Products Monitoring System is a robust solution designed to 
 - **Naming Convention Check:** It checks the names of the provisioned products against the prescribed convention and send alerts when these conventions are broken
 - **Unauthorised User Product Launches:** When a user attempts to launch a product, the application verifies their account against a predefined list of authorized users stored in an Amazon S3 bucket.
 - **Slack Notification:** Upon identification of stale provisioned products or users with a high number of provisioned products, the application sends notifications via Slack to notify the user.
+- **Bulk Email Notifications:** Users can send bulk email notifications based on violations detected, such as stale products, exceeded launches, naming convention issues, or unauthorized user launches.
+- **Individual Email Notifications:** Upon clicking on an individual row, a button is available to send email notifications to the specific user associated with that product.
 
 ## Installation
 1. Clone the repository to your local or remote machine.
 2. Set up AWS credentials with appropriate permissions.
 3. Navigate to the project directory.
-4.sudo apt install python3-pip
-4. Install the required Python packages using `pip install -r requirements.txt`.
-5. Run the Flask application by executing `python3 app.py`.
-6. Access the application by visiting the provided IP address in your web browser. You will be directed to the dashboard page where all the features are available.
+4. Create a copy of config.py.example and name it config.py. Fill in the correct data according to your environment.
+6. Create a copy of .env.example and name it .env. Fill in the correct data according to your environment.
+7. Install the required Python packages using pip install -r requirements.txt.
+8. Run the Flask application by executing python3 app.py.
+9. Access the application by visiting the provided IP address in your web browser. You will be directed to the dashboard page where all the features are available.
 
 ### Configuration
 - **AWS Credentials:** Ensure that AWS credentials with appropriate permissions are configured on the system where the application will run.
-- **Slack Webhook URL:** To enable Slack notification, update the `SLACK_WEBHOOK_URL` variable in the `config.py` file with the appropriate webhook URL provided by Slack.
-- **Threshold Configuration:** Adjust the threshold time for identifying stale provisioned products and the threshold count for identifying users with a high number of provisioned products in the `config.py` file.
+- **Slack Webhook URL:** To enable Slack notification, update the SLACK_WEBHOOK_URL variable in the .env file with the appropriate webhook URL provided by Slack.
+- **SMTP Server Configuration:** Update the SMTP server configuration in the .env file with your email server details.
+- **Threshold Configuration:** Adjust the threshold time for identifying stale provisioned products and the threshold count for identifying users with a high number of provisioned products in the config.py file.
 - **Notification Scheduler:** Configure the notification_scheduler.py script to run once a day using a task scheduler (e.g., cron job). This script automates the process of sending notifications at regular intervals to keep users informed about stale provisioned products and other relevant updates.
 
 ## Dependencies
