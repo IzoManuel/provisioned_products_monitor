@@ -42,6 +42,88 @@
             "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/davyngugi@gmail.com"
         },
         {
+            "Name": "izo-pesa-dg-cloud9-ide",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-ngugi-dg-cloud9-ide/pp-ntrtw7xv6iiiq",
+            "Type": "CFN_STACK",
+            "Id": "pp-ntrtw7xv6iiiq",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-11T16:41:26.327000+00:00",
+            "IdempotencyToken": "6d1c3867-467a-433d-8b30-d59f0218328c",
+            "LastRecordId": "rec-qymcvhf44aw6c",
+            "LastProvisioningRecordId": "rec-qymcvhf44aw6c",
+            "LastSuccessfulProvisioningRecordId": "rec-qymcvhf44aw6c",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-uc4cx7ox7hlku"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/davyngugi@gmail.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-lv44rpavmf2im"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/david-ngugi-dg-cloud9-ide/pp-ntrtw7xv6iiiq"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-ntrtw7xv6iiiq/6641dbd0-c8fc-11ee-8bb1-06860d307d0e",
+            "ProductId": "prod-uc4cx7ox7hlku",
+            "ProductName": "dg-cloud9-ide",
+            "ProvisioningArtifactId": "pa-lv44rpavmf2im",
+            "ProvisioningArtifactName": "dg-cloud9-ide_pa-lv44rpavmf2im",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/israel7payment@gmail.com"
+        },
+        {
+            "Name": "izo-ibra-dg-lamp-server",
+            "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/felix-odida-dg-lamp-server/pp-s2x7xyo6bs77c",
+            "Type": "CFN_STACK",
+            "Id": "pp-s2x7xyo6bs77c",
+            "Status": "AVAILABLE",
+            "CreatedTime": "2024-02-28T18:17:13.859000+00:00",
+            "IdempotencyToken": "930e7334-98a0-4e25-bd8a-c25ee4029296",
+            "LastRecordId": "rec-tynm4vvhvnbwo",
+            "LastProvisioningRecordId": "rec-tynm4vvhvnbwo",
+            "LastSuccessfulProvisioningRecordId": "rec-tynm4vvhvnbwo",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:product/prod-nmxjdjqqgd57e"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/felix@deployguru.com"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-pkvs7fatwh4ss"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:ap-south-1:711296655649:portfolio/port-g3u3xjcle2uxa"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/felix-odida-dg-lamp-server/pp-s2x7xyo6bs77c"
+                }
+            ],
+            "PhysicalId": "arn:aws:cloudformation:ap-south-1:835954083955:stack/SC-835954083955-pp-s2x7xyo6bs77c/991909e0-d665-11ee-ae47-069ce21d675c",
+            "ProductId": "prod-nmxjdjqqgd57e",
+            "ProductName": "dg-lamp-server",
+            "ProvisioningArtifactId": "pa-pkvs7fatwh4ss",
+            "ProvisioningArtifactName": "dg-lamp-server_pa-pkvs7fatwh4ss",
+            "UserArn": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443",
+            "UserArnSession": "arn:aws:sts::835954083955:assumed-role/AWSReservedSSO_dg-learning-developer_80056269622b1443/israelibrahim09434@gmail.com"
+        },
+        {
             "Name": "felix-odida-dg-lamp-server",
             "Arn": "arn:aws:servicecatalog:ap-south-1:835954083955:stack/felix-odida-dg-lamp-server/pp-s2x7xyo6bs77c",
             "Type": "CFN_STACK",

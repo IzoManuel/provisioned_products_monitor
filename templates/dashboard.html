@@ -18,50 +18,78 @@
         .details {
             display: none;
         }
+
+        .formatted-json {
+            font-family: Arial, sans-serif;
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
     </style>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Tailwind JS file -->
     <script src="https://cdn.tailwindcss.com"></script>
-
 </head>
 
 <body>
-
     {% include 'navbar.html' %}
     <div class="container">
-        <h1 class="mb-4 mt-5 text-gray-600 font-bold">Resource Status Dashboard</h1>
-        <div class="table-responsive table-height border-bottom">
-            <table class="table table-bordered">
-                <thead class="thead-dark sticky">
-                    <tr class="text-sm">
-                        <th></th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Duration</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for product in provisioned_products %}
-                    <tr class="text-sm">
-                        <td>
-                            <input type="radio" class="radio" name="selectedProduct" id="radio{{ product.index }}"
-                            onchange="showDetailsForRow({{ product.index }})">
-                        </td>
-                        <td>{{ product.Name }}</td>
-                        <td>{{ product.duration }}</td>
-                        <td>{{ product.Status }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        {% include 'product-sum-cards.html' %}
+        <div class="mt-8">
+            <div>
+                {% include 'toast.html' %}
+            </div>
+            <ul class="nav nav-pills mb-3 text-sm font-semibold" id="pills-tab" role="tablist">
+                <li class="nav-item mr-3" role="presentation">
+                    <button class="nav-link btn-warning active" id="pills-stale-tab" data-toggle="pill"
+                        data-target="#pills-stale" type="button" role="tab" aria-controls="pills-stale"
+                        aria-selected="true" onclick="resetIsConfirming()">
+                        Stale products ({{stale_product_threeshold_time}} hrs)
+                    </button>
+                </li>
+                <li class="nav-item mr-3" role="presentation">
+                    <button class="nav-link btn-warning" id="pills-launches-tab" data-toggle="pill"
+                        data-target="#pills-launches" type="button" role="tab" aria-controls="pills-launches"
+                        aria-selected="false" onclick="resetIsConfirming()">
+                        User's Launched products ({{high_product_count_threshold}})
+                    </button>
+                </li>
+                <li class="nav-item mr-3" role="presentation">
+                    <button class="nav-link btn-warning" id="pills-discrepancy-tab" data-toggle="pill"
+                        data-target="#pills-discrepancy" type="button" role="tab" aria-controls="pills-discrepancy"
+                        aria-selected="false" onclick="resetIsConfirming()">
+                        Naming Discrepancies
+                    </button>
+                </li>
+                <li class="nav-item mr-3" role="presentation">
+                    <button class="nav-link btn-warning" id="pills-unauthorized-tab" data-toggle="pill"
+                        data-target="#pills-unauthorized" type="button" role="tab" aria-controls="pills-unauthorized"
+                        aria-selected="false" onclick="resetIsConfirming()">
+                        Unauthorised product launches
+                    </button>
+                </li>
+            </ul>
         </div>
 
-        <div id="selectedItemDetailsRow" style="display: none;" class="">
-            <h6 class="mt-6 font-weight-bold mb-3 text-gray-600">Details</h6>
-            <div id="selectedItemDetails" class="border rounded-sm bg-gray-50 p-3  text-sm"></div>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-stale" role="tabpanel" aria-labelledby="pills-home-tab">
+                {% include 'stale-products-table.html' %}
+            </div>
+            <div class="tab-pane fade" id="pills-launches" role="tabpanel" aria-labelledby="pills-profile-tab">
+                {% include 'user-launches-table.html' %}
+            </div>
+            <div class="tab-pane fade" id="pills-discrepancy" role="tabpanel" aria-labelledby="pills-contact-tab">
+                {% include 'naming-discrepancy-table.html' %}
+            </div>
+            <div class="tab-pane fade" id="pills-unauthorized" role="tabpanel" aria-labelledby="pills-contact-tab">
+                {% include 'unauthorized-users-table.html' %}
+            </div>
         </div>
+
 
     </div>
 
@@ -70,7 +98,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        var provisioned_products = {{ provisioned_products | tojson }};
+        var stale_products = {{ stale_products | tojson }};
+        var users = {{ users | tojson }};
+        var name_disc_products = {{ name_disc_products | tojson }}
+        var unauthorized_users = {{ unauthorized_users | tojson }}
     </script>
     <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
